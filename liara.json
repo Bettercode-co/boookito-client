@@ -1,0 +1,5 @@
+{
+    "platform": "next",
+    "app": "bookito-frontend",
+    "port": 3000
+}

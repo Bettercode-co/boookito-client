@@ -1,0 +1,24 @@
+@font-face {
+    font-family: IRANSans;
+    src: url('../public/IRANSans.ttf');
+}
+@font-face {
+    font-family: iranYekan;
+    src: url('../public/AnyConv.com__iranyekanwebmedium.2d4f96e5.ttf');
+}
+
+body {
+    direction: rtl;
+    font-family:iranYekan;
+}
+.section::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: #8070D4;
+    border: 6px solid rgba(0,0,0,0.2);
+}
+.Toastify__toast-body{
+
+    font-family:IRANSans;
+    font-size: 12px;
+    
+}
