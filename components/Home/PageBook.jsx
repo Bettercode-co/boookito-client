@@ -21,7 +21,7 @@ export default function PageBook({ id }) {
       .catch(function (err) {
         console.log(err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <>
