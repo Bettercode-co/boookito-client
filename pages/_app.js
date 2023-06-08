@@ -9,12 +9,13 @@ import Login from "../components/Login";
 import { Head } from "next/document";
 import NavbarComponent from "../components/Layout/Navbar";
 import { useRouter } from "next/router";
+import { AxiosInstance } from "../utils/http";
 
 function MyApp({ Component, pageProps }) {
   const [login, setLogin] = useState(true);
   const router = useRouter();
-  const nowRouter=router.asPath
-  console.log(nowRouter)
+  const nowRouter = router.asPath;
+  
   return (
     <>
       {login ? (
