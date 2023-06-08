@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BlurImage from "../Lazy/BlurImage";
 
 export default function SingleRowBook(props) {
   return (
@@ -10,11 +11,7 @@ export default function SingleRowBook(props) {
               href={{ pathname: "/book/[id]" }}
               as={`/book/${props.bookId}`}
             >
-              <img
-                className="w-full  absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-                src={props.imageSource}
-                alt="Image Description"
-              />
+              <BlurImage image={props.imageSource} />
             </Link>
             <span className="absolute  top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
               #{props.categoryName}

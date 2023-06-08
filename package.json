@@ -31,6 +31,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "autoprefixer": "^10.4.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",

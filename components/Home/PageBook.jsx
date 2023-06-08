@@ -72,7 +72,7 @@ export default function PageBook({ id }) {
                   </h3>
                 </button>
                 <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                  <h3 className="text-lg font-heading font-medium">
+                  <h3 className="text-lg text-right font-heading font-medium">
                     مترجمان : {allbooks?.translatorName?.map((value,index)=>{
                       return value
                     })}
