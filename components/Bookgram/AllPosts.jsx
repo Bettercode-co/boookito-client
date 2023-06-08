@@ -11,6 +11,7 @@ export default function AllPosts() {
   const [maxcount, setMaxCount] = useState(0);
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [data,setData]=useState(false)
 
   useEffect(() => {
     AxiosInstance.get(`/user/posts/${page}`, {
