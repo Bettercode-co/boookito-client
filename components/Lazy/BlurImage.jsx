@@ -10,7 +10,7 @@ export default function BlurImage({image}) {
           unoptimized={true}
           quality={50}
           src={image}
-          loading="eager"
+          loading="lazy"
           layout="fill"
           objectFit="cover"
           className={`
