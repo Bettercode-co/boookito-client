@@ -7,6 +7,8 @@ export default function BlurImage({image}) {
   return (
         <Image
           alt="not loaded"
+          unoptimized={true}
+          quality={50}
           src={image}
           loading="eager"
           layout="fill"
