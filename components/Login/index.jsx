@@ -140,16 +140,9 @@ export default function Login() {
                     </span>
                     ورود
                   </button>
-                  <p className="text-gray-600 text-[12px] text-center mb-6 leading-loose mt-5">
-                    ورود شما به معنای پذیرش
-                    <a className="underline" href="/rules">
-                      {" "}
-                      قوانین{" "}
-                    </a>{" "}
-                    بوکیتو می باشد
-                  </p>
+              
                   <Link href="/user/forgetpassword">
-                    <a className="text-xs text-green-500">
+                    <a className="text-xs text-green-500 pt-5">
                       رمز عبور خود را فراموش کرده ام
                     </a>
                   </Link>
