@@ -7,7 +7,7 @@ import {AiOutlineArrowLeft,AiOutlineLock} from 'react-icons/ai'
 import {CiLogout} from 'react-icons/ci'
 import {MdOutlineArticle, MdOutlineManageSearch} from 'react-icons/md'
 import {CiBoxList} from 'react-icons/ci'
-import {BsShare} from 'react-icons/bs'
+
 export default function dashboard() {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState(false);
@@ -43,9 +43,6 @@ export default function dashboard() {
   const items=[
     {title:'اطلاعات حساب کاربری',href:'/user/account',icon:<BiUser size={25} color="#22c55e"/>  },
     {title:'لیست امانات',href:'/user/myreserved',icon:<CiBoxList size={25} color="#22c55e"/>  },
-    {title:'بوکگرام',href:'/bookgram',icon:<BsShare size={25} color="#22c55e"/>  },
-    {title:'افزودن پست',href:'/user/newpost',icon:<BiPlus size={25} color="#22c55e"/>  },
-    {title:'مدیریت پست ها',href:'/user/management',icon:<MdOutlineManageSearch size={25} color="#22c55e"/>  },
     {title:'تغییر رمز عبور',href:'/user/changepassword',icon:<AiOutlineLock size={25} color="#22c55e"/>  },
     {title:'سرویس مگیران',href:'https://magiran.com/',icon:<MdOutlineArticle size={25} color="#22c55e"/>  },
     {title:'خروج از حساب کاربری',href:'/user/logout',icon:  <CiLogout color="#ff0000" size={25}/>  },
@@ -58,7 +55,7 @@ export default function dashboard() {
         <p>شما باید لاگین کنید</p>
       ) : (
         <div className="mt-6 mx-4 p-4 md:mb-8 bg-white rounded-lg border shadow-md sm:p-6 dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-6 text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
+          <h5 className="mb-6 text-base font-semibold text-gray-700 lg:text-xl dark:text-white">
             کاربر {userData.firstname} {userData.lastname} خوش آمدید
           </h5>
           <p className="text-sm md:text-base font-normal mb-6 text-gray-500 dark:text-gray-400 mt-5">

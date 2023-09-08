@@ -9,7 +9,7 @@ import Login from "../components/Login";
 import { Head } from "next/document";
 import NavbarComponent from "../components/Layout/Navbar";
 import { useRouter } from "next/router";
-import { AxiosInstance } from "../utils/http";
+import ApiMiddleware from "../components/Middleware/Up";
 
 function MyApp({ Component, pageProps }) {
   const [login, setLogin] = useState(true);
@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
   
   return (
     <>
+    <ApiMiddleware/>
       {login ? (
         <Layout>
           <NavbarComponent url={nowRouter} />

@@ -1,26 +1,40 @@
 import Link from "next/link";
 export default function Custom503() {
   return (
-    <div className="max-w-[50rem] flex flex-col mx-auto w-full h-full">
-      <header className="mb-auto flex justify-center z-50 w-full py-4"></header>
-      <div className="text-center py-10 px-4 sm:px-6 lg:px-8">
-        <h1 className="block text-7xl font-bold text-green-500 sm:text-9xl dark:text-white">
-          503
-        </h1>
-        <h1 className="block text-2xl font-bold text-white" />
-        <p className="mt-3 text-gray-600 dark:text-gray-400">
-          سرویس بوکیتو در حال به روزرسانی می باشد
-        </p>
-        <p className="text-gray-600 dark:text-gray-400">
-          این قطعی موقتی می باشد و احتمالا تا یکی دوساعت دیگه سرویس به حالت عادی
-          برگردد
-        </p>
-      </div>
-      <footer className="mt-auto text-center py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500"> طراحی توسط bettercode</p>
+    <div className="flex items-center justify-center w-screen md:w-full h-screen">
+    <div className="px-4 lg:py-12">
+      <div className="lg:gap-4 lg:flex">
+        <div
+          className="flex flex-col items-center justify-center md:py-24 lg:py-32"
+        >
+          <h1 className="font-bold text-green-500 text-9xl">500</h1>
+          <p
+            className="mb-2 text-2xl font-bold text-center text-gray-800 dark:text-gray-400 md:text-3xl"
+          >
+            <span className="text-red-500">وای!</span> خطا در سرور
+          </p>
+          <p className="mb-8 text-center text-gray-500 md:text-lg">
+            ممکن است خطایی در سرور رخ داده باشد  یا در حال به روزرسانی باشیم.بعد از ساعاتی دوباره سرویس برقرار میشود
+          </p>
+          
+          <Link href="/">
+         
+         <a
+            
+            className="px-6 py-2 text-sm font-semibold rounded-lg w-40 text-center text-blue-500 bg-green-100"
+            >بازگشت به خانه</a
+          >
+         </Link>
         </div>
-      </footer>
+        <div className="mt-4">
+          <img
+            src="https://i.pinimg.com/originals/44/1f/80/441f80178f6e257a8c4803c6ff3c4fc6.gif"
+            alt="img"
+            className="object-cover w-full h-full"
+          />
+        </div>
+      </div>
     </div>
+  </div>
   );
 }

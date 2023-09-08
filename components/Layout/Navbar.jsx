@@ -20,9 +20,9 @@ export default function NavbarComponent({url}) {
   }, [url]);
   return (
     <>
-      <header className="hidden lg:block container mx-auto  flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b shadow-lg  rounded-lg text-sm py-2.5 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
+      <header className="hidden   lg:block container mx-auto  flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b shadow-lg  rounded-lg text-sm py-2.5 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
         <nav
-          className="max-w-8xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
+          className="max-w-8xl  flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
           aria-label="Global"
         >
           <div className="mr-5 md:mr-8">

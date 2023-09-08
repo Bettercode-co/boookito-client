@@ -28,12 +28,6 @@ export default function footer() {
               </a>
             </Link>
 
-            <Link href="/bookgram">
-              <a className="w-full focus:text-green-500 focus:border-t-2  border-green-500 justify-center inline-block text-center pt-2 pb-1">
-              <TbBrandInstagram size={25} className="mx-auto mb-1 text-green-500"/>
-                <span className=" block text-[11px]">بوک گرام</span>
-              </a>
-            </Link>
 
             {hasLoggedIn ? (
               <Link href="/user/dashboard">

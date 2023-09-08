@@ -14,7 +14,6 @@ export default function EditProfile() {
   const [successChange, setsuccessChange] = useState(false);
   const [img, setImg] = useState("");
 
-  const bookgramInput = useRef();
 
   useEffect(() => {
     AxiosInstance.get("/user/myprofile", {
@@ -29,9 +28,7 @@ export default function EditProfile() {
       .catch((err) => err);
   }, [file, accountdata.username_bookgram]);
 
-  useEffect(() => {
-    bookgramInput.current.focus();
-  }, []);
+ 
 
   const changeUsername = async (e) => {
     setsuccessChange(false);
@@ -115,9 +112,7 @@ export default function EditProfile() {
 
   return (
     <>
-      {successChange && (
-        <Toast type="success" message="نام کاربری با موفقیت تغییر کرد" />
-      )}
+      
       <div className=" md:mt-10 max-w-4xl mx-auto md:mb-8 bg-white dark:bg-gray-700 rounded-lg shadow-xl px-4">
         <div className="flex flex-col  ">
           <form
@@ -159,7 +154,7 @@ export default function EditProfile() {
               )}
             </div>
           </form>
-          <form onSubmit={changeUsername}>
+          
             <div className="w-full  ">
               <section className="md:flex  w-full md:gap-x-6 md:mb-6 mb-0 justify-between items-center">
                 <div className="w-full mb-3 md:mb-0">
@@ -244,43 +239,17 @@ export default function EditProfile() {
                     className="mt-2 border  text-left  border-gray-300 text-[13px] text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                   />
                 </div>
-                <div className="w-full">
-                  <label className="block text-sm ">نام کاربری کتابگرام</label>
-                  <input
-                    ref={bookgramInput}
-                    value={userBookGram}
-                    onChange={(e) => setUserBookGram(e.target.value)}
-                    placeholder="@"
-                    dir="ltr"
-                    autoComplete="off"
-                    type="text"
-                    className="mt-2 text-left border    border-gray-300 text-[13px] text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
-                  />
-                </div>
+               
               </section>
             </div>
-            {empty ? (
-              <p className="text-rose-500 text-sm text-center mt-2">
-                نام کاربری نمیتواند خالی باشد
-              </p>
-            ) : (
-              ""
-            )}
-            {minlengthError ? (
-              <p className="text-rose-500 text-sm text-center mt-2">
-                نام کاربری باید حداقل 5 کاراکتر باشد
-              </p>
-            ) : (
-              ""
-            )}
+         
             <button
-              type="submit"
+              
               className="mb-8 block w-full md:w-44 mx-auto px-4 py-2 mt-8 md:mt-12 text-sm font-medium leading-5 text-center text-white transition-colors duration-150  bg-green-500 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
-              href="#"
+              
             >
-              ثبت تغییرات
+              در صورت هرگونه مغایرت اطلاعات به مسئول کتابخانه مراجعه فرمایید
             </button>
-          </form>
         </div>
       </div>
     </>

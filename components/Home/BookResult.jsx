@@ -5,7 +5,6 @@ import Select from "../common/Select";
 import LoadingScroll from "./LoadingScroll";
 import LogoApplication from "./Logo";
 import SingleRowBook from "./SingleRowBook";
-import Image from "next/image";
 
 export default function BookResult() {
   const [books, setBooks] = useState([]);

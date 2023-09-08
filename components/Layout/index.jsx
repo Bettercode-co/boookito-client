@@ -13,9 +13,9 @@ export default function Layout(props) {
         ></meta>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="/logo.svg" />
+        <link rel="shortcut icon" href="/logo1.ico" />
         <title>بوکیتو-سرویس ابری کتابخانه های دانشگاه ها</title>
-        <meta name="description" content="بوکیتو-سرویس ابری کتابخانه"></meta>
+        <meta name="description" content="بوکیتو سرویس ابری مدیریت کتابخانه‌های دانشگاه ها که امکان قرض‌گیری کتاب، جستجوی منابع اطلاعاتی و ارائه خدمات دیگر مرتبط با کتابخانه را به اعضای دیگر دانشگاه ها فراهم می‌کند"></meta>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
