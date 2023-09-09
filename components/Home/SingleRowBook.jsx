@@ -8,7 +8,7 @@ export default function SingleRowBook(props) {
       <div className="card p-5 card-side justify-center dark:bg-gray-700 dark:border-gray-800 bg-white border shadow-sm rounded-xl hover:shadow-md transition mx-4 my-3 md:px-4 px-2">
         <Link href={{ pathname: "/book/[id]" }} as={`/book/${props.bookId}`}>
           <a className="group rounded-xl overflow-hidden">
-            <div className="relative h-72 scale-100 pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+            <div className="relative lg:h-60  h-96 scale-100 pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
               <Link
                 href={{ pathname: "/book/[id]" }}
                 as={`/book/${props.bookId}`}

@@ -3,24 +3,21 @@ import LogoApplication from "../Home/Logo";
 import { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/http";
 
-export default function NavbarComponent({url}) {
+export default function NavbarComponent({ url }) {
   const [login, setLogin] = useState(false);
   const [image, setImage] = useState("");
-
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setLogin(true);
-      setImage(localStorage.getItem('image'))
-    }else{
-      setLogin(false)
+      setImage(localStorage.getItem("image"));
+    } else {
+      setLogin(false);
     }
-    
-    
   }, [url]);
   return (
     <>
-      <header className="hidden   lg:block container mx-auto  flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b shadow-lg  rounded-lg text-sm py-2.5 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
+      <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-white border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
         <nav
           className="max-w-8xl  flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
           aria-label="Global"
@@ -43,7 +40,7 @@ export default function NavbarComponent({url}) {
                 <Link href="/login">
                   <a
                     type="button"
-                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-green-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    class="py-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-green-600 text-white shadow-sm align-middle   "
                   >
                     ورود به حساب کاربری
                   </a>

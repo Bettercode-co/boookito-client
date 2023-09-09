@@ -245,7 +245,7 @@ export default function EditProfile() {
          
             <button
               
-              className="mb-8 block w-full md:w-44 mx-auto px-4 py-2 mt-8 md:mt-12 text-sm font-medium leading-5 text-center text-white transition-colors duration-150  bg-green-500 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
+              className="mb-8 block w-full md:w-44 mx-auto px-4 py-2 mt-8 md:mt-12 text-sm font-medium leading-5 text-center text-white transition-colors duration-150  bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
               
             >
               در صورت هرگونه مغایرت اطلاعات به مسئول کتابخانه مراجعه فرمایید

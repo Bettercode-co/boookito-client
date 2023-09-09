@@ -33,7 +33,7 @@ export default function UserReserved() {
         <div className="flex justify-between items-center mb-6">
           <h5 className="text-lg font-bold leading-none text-gray-900 dark:text-white mt-6 ">امانات من </h5>
           <a href="#" className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
-            <span className="mt-6 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs  leading-none text-white bg-green-500 rounded-full">{count} امانت فعال</span>
+            <span className="mt-6 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs  leading-none text-white bg-green-600 rounded-full">{count} امانت فعال</span>
           </a>
         </div>
         <div className="flow-root">

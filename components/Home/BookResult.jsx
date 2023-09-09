@@ -311,7 +311,7 @@ export default function BookResult() {
             <button
               onClick={bookSearch}
               type="submit"
-              className=" text-white left-2.5 bottom-2.5 absolute bg-green-500  font-medium rounded-lg text-sm px-4 py-2 "
+              className=" text-white left-2.5 bottom-2.5 absolute bg-green-600  font-medium rounded-lg text-sm px-4 py-2 "
             >
               <div>
                 <svg
@@ -335,11 +335,11 @@ export default function BookResult() {
           </div>
         </form>
         {loading && (
-          <p className="my-16 bg-gray-50 dark:bg-gray-700 px-6 py-3 rounded-lg w-1/2 mx-auto text-green-500 text-center">
+          <p className="my-16 bg-gray-50 dark:bg-gray-700 px-6 py-3 rounded-lg w-1/2 mx-auto text-green-600 text-center">
             در حال جستجوی کتاب ...
           </p>
         )}
-        <section className="grid md:grid-cols-4 lg:grid-cols-4 2xl:grid-cols-5 ">
+        <section className="grid md:grid-cols-4 lg:grid-cols-4 2xl:grid-cols-6 ">
           {!loading && allbooks}
         </section>
 

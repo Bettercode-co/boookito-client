@@ -22,8 +22,8 @@ export default function footer() {
         >
           <div id="tabs" className="flex justify-between">
             <Link href="/">
-              <a className="w-full  focus:text-green-500 focus:border-t-2 border-green-500  hover:text-green-500 justify-center inline-block text-center pt-2 pb-1">
-                <TbSmartHome className="mx-auto mb-1 text-green-500" size={25 }/>
+              <a className="w-full  focus:text-green-600 focus:border-t-2 border-green-500  hover:text-green-600 justify-center inline-block text-center pt-2 pb-1">
+                <TbSmartHome className="mx-auto mb-1 text-green-600" size={25 }/>
                 <span className=" block text-[11px]">خانه</span>
               </a>
             </Link>
@@ -33,9 +33,9 @@ export default function footer() {
               <Link href="/user/dashboard">
                 <a
                   href="#"
-                  className="w-full focus:text-green-500 focus:border-t-2 border-green-500 justify-center inline-block text-center pt-2 pb-1"
+                  className="w-full focus:text-green-600 focus:border-t-2 border-green-500 justify-center inline-block text-center pt-2 pb-1"
                 >
-                  <TbUser size={25} className="mx-auto mb-1 text-green-500"/>
+                  <TbUser size={25} className="mx-auto mb-1 text-green-600"/>
                   <span className=" block text-[11px]">پروفایل</span>
                 </a>
               </Link>
@@ -43,9 +43,9 @@ export default function footer() {
               <Link href="/login">
                 <a
                   href="#"
-                  className="w-full focus:text-green-500 focus:border-t-2 border-green-500 justify-center inline-block text-center pt-2 pb-1"
+                  className="w-full focus:text-green-600 focus:border-t-2 border-green-500 justify-center inline-block text-center pt-2 pb-1"
                 >
-                <TbLogin size={25} className="mx-auto mb-1 text-green-500"/>
+                <TbLogin size={25} className="mx-auto mb-1 text-green-600"/>
 
 
                   <span className=" block text-xs">ورود به حساب</span>

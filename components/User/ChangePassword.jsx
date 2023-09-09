@@ -119,7 +119,7 @@ const ChangePasswordComponent = () => {
 
               </div>
               <div className="flex items-center justify-center">
-              <button type="submit" className="text-white w-full  mt-5  bg-green-500 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm  py-3  mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800"> تغییر رمز عبور </button>
+              <button type="submit" className="text-white w-full  mt-5  bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm  py-3  mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800"> تغییر رمز عبور </button>
 
               </div>
           

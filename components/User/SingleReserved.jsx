@@ -8,7 +8,7 @@ export default function SingleReserved({ bookname, image, index, expire, returne
         break;
     
         case "ACTIVE":
-          return   <span className=" text-green-500 border  border-green-500 text-sm font-medium  px-3 py-0.5 rounded  ">امانت فعال </span> 
+          return   <span className=" text-green-600 border  border-green-500 text-sm font-medium  px-3 py-0.5 rounded  ">امانت فعال </span> 
           break;
 
 

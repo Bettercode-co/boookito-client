@@ -45,10 +45,10 @@ export default function PageBook({ id }) {
                   {allbooks.bookName}
                 </h2>
                 <p className="flex items-center mb-6">
-                  <span className="mr-2 text-md text-green-500 font-bold">
+                  <span className="mr-2 text-md text-green-600 font-bold">
                     کدکتاب :
                   </span>
-                  <span className="text-3xl border-b-2 text-green-500 font-bold">
+                  <span className="text-3xl border-b-2 text-green-600 font-bold">
                      {Pn.convertEnToPe(allbooks.id)}
                   </span>
                 </p>
@@ -91,7 +91,7 @@ export default function PageBook({ id }) {
                 <div className="w-full md:w-2/3 px-2 mb-2 md:mb-0">
                   <a
                   
-                    className="block disabled opacity-50 py-4 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-green-500 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 hover:bg-green-600 rounded-xl"
+                    className="block disabled opacity-50 py-4 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 hover:bg-green-600 rounded-xl"
                     
                   >
                     رزرو کردن کتاب فقط به صورت حضوری است

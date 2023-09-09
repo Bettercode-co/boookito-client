@@ -120,7 +120,7 @@ export default function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="mt-8    group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="mt-8    group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                       <svg
@@ -142,7 +142,7 @@ export default function Login() {
                   </button>
               
                   <Link href="/user/forgetpassword">
-                    <a className="text-xs text-green-500 pt-5">
+                    <a className="text-xs text-green-600 pt-5">
                       رمز عبور خود را فراموش کرده ام
                     </a>
                   </Link>

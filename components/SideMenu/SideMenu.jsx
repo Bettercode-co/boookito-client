@@ -27,7 +27,7 @@ const SideMenu = () => {
         <h1 className="mt-5">کتابخانه دانشگاه فنی حرفه ای استان مرکزی</h1>
       </div>
 
-      <div className="bg-green-500 my-6  border-b border-green-500 shadow-xl "></div>
+      <div className="bg-green-600 my-6  border-b border-green-500 shadow-xl "></div>
 
       <div id="" className=" flex flex-col  ">
         <Link href="/">
@@ -46,7 +46,7 @@ const SideMenu = () => {
           <a
             className={classNames(
               "py-3 mb-3 flex items-center rounded-2xl  px-8",
-              router.pathname == "/bookgram" && "bg-green-500 text-white"
+              router.pathname == "/bookgram" && "bg-green-600 text-white"
             )}
           >
             <AiOutlineInstagram className="h-6 w-6 stroke-current" />
@@ -59,7 +59,7 @@ const SideMenu = () => {
             <a
               className={classNames(
                 "py-3 mb-3 flex items-center rounded-2xl  px-8",
-                router.pathname == "/user/dashboard" && "bg-green-500 text-white"
+                router.pathname == "/user/dashboard" && "bg-green-600 text-white"
               )}
             >
               <UserIcon className="h-6 w-6 stroke-current" />
@@ -71,7 +71,7 @@ const SideMenu = () => {
             <a
               className={classNames(
                 "py-3 mb-3 flex items-center rounded-2xl  px-8",
-                router.pathname == "/login" && "bg-green-500 text-white"
+                router.pathname == "/login" && "bg-green-600 text-white"
               )}
             >
               <UserIcon className="h-6 w-6 stroke-current" />

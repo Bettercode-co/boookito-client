@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Toast from "../Toast/Toast";
-import NavbarComponent from "./Navbar";
 
 export default function Layout(props) {
   return (
@@ -22,12 +21,10 @@ export default function Layout(props) {
         ></meta>
       </Head>
 
-      <main className="grid grid-cols-12 mx-auto container  md:gap-x-4 min-h-screen">
         <div className="col-span-12 md:col-span-12  ">
           <Toast />
           {props.children}
         </div>
-      </main>
     </>
   );
 }
