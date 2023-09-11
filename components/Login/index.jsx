@@ -66,12 +66,12 @@ export default function Login() {
         <ChangePassword username={username} />
       ) : (
         <div className=" flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
-          <div className="border border-gray-200 p-10 rounded-lg max-w-md w-full space-y-8">
+          <div className="border border-gray-200 bg-white  p-10 rounded-lg max-w-md w-full space-y-8">
             <div>
               <LogoApplication />
 
               <p className="text-center text-sm text-gray-600 mt-5">
-                <a href="#" className="font-medium text-gray-500">
+                <a href="" className="font-medium text-gray-500">
                   {" "}
                   برای ورود به بوکیتو نام کاربری و رمز عبور خود را وارد کنید
                 </a>
@@ -142,7 +142,7 @@ export default function Login() {
                   </button>
               
                   <Link href="/user/forgetpassword">
-                    <a className="text-xs text-green-600 pt-5">
+                    <a className="text-xs text-green-600 ">
                       رمز عبور خود را فراموش کرده ام
                     </a>
                   </Link>

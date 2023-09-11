@@ -14,10 +14,6 @@ export default function dashboard() {
   const router = useRouter();
   
 
-  const handleExit = () => {
-    localStorage.clear();
-    router.push("/login");
-  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {

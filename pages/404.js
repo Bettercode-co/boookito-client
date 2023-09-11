@@ -30,7 +30,7 @@ export default function Custom404() {
         </div>
         <div className="mt-4">
           <img
-            src="https://miro.medium.com/v2/resize:fit:1400/1*zE2qnVTJehut7B8P2aMn3A.gif"
+            src="/404.gif"
             alt="img"
             className="object-cover w-full h-full"
           />
