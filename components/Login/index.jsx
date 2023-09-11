@@ -7,6 +7,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import LogoApplication from "../Home/Logo";
 import Pn from "persian-number";
+import Head from "next/head";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -62,6 +63,9 @@ export default function Login() {
 
   return (
     <>
+    <Head>
+      <title>بوکیتو-ورود به حساب کاربری</title>
+    </Head>
       {changePassword ? (
         <ChangePassword username={username} />
       ) : (

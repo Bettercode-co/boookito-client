@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import LogoApplication from "../Home/Logo";
 import Pn from "persian-number";
 import Link from "next/link";
+import Head from "next/head";
 
 const initialValues = {
   username: "",
@@ -48,7 +49,12 @@ const ForgetPassword = () => {
 
   const router = useRouter();
   return (
-    <section className="">
+    <>
+    
+    <Head>
+    <title>بوکیتو-فراموشی رمز عبور</title>
+  </Head>
+  <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
         <a
           href="#"
@@ -127,6 +133,8 @@ const ForgetPassword = () => {
         </div>
       </div>
     </section>
+    </>
+  
   );
 };
 
