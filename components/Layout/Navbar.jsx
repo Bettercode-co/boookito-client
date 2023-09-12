@@ -23,15 +23,10 @@ export default function NavbarComponent({ url }) {
           aria-label="Global"
         >
           <div className="mr-5 md:mr-8">
-            <Link
-              className="flex-none text-xl font-semibold dark:text-white"
-              href="/"
-              aria-label="Brand"
-            >
-              <a href="">
+            
+              <a href="/" className="flex-none text-xl font-semibold dark:text-white">
                 <LogoApplication />
               </a>
-            </Link>
           </div>
           <div className="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
             <div className="hidden sm:block"></div>
