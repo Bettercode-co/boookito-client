@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import book_search, { book_init, book_search_wit_category, book_search_with_sub_category } from "../../services/search";
+import book_search, { book_init, book_search_wit_category, book_search_with_sub_category, last_search, suggestionService } from "../../services/search";
 import { AiOutlineSearch } from "react-icons/ai";
 import LogoApplication from "./Logo";
 import Select from "../common/Select";
 import { AxiosInstance } from "../../utils/http";
 import SingleRowBook from "./SingleRowBook";
+import LoadingScroll from "./LoadingScroll";
 
 
 export default function MainComponent() {
@@ -21,13 +22,13 @@ export default function MainComponent() {
 
   const [currentBookName, setCurrentBookName] = useState(bookName !=undefined ? bookName : "");
 
-  const [currentLibraryId, setCurrentLibraryId] = useState(libraryId !=undefined ? parseInt(libraryId) : 1);
+  const [currentLibraryId, setCurrentLibraryId] = useState(libraryId !=undefined ? parseInt(libraryId) : null);
 
   const [currentCategoryId, setCurrentCategoryId] = useState(categoryId !=undefined ? parseInt(categoryId) : null);
 
-  const [currentSubCategoryId,setCurrentSubCategoryId]=useState(subCategoryId !=undefined ? parseInt(subCategoryId) : 1)
+  const [currentSubCategoryId,setCurrentSubCategoryId]=useState(subCategoryId !=undefined ? parseInt(subCategoryId) : null)
 
-  const [currenPageId,setCurrentPageId]=useState(1)
+  const [currenPageId,setCurrentPageId]=useState(pageId ? parseInt(pageId) : 1)
 
   const [currenLoading,setCurrentLoading]=useState(true)
   
@@ -92,12 +93,24 @@ export default function MainComponent() {
 
 
 
-useEffect(async()=>{
-    const result=await book_init(currentBookName,currentLibraryId,currenPageId,currentSubCategoryId)
-    setBooks(result.result)
-    setCurrentLoading(false)
-    console.log(books,"BOOOOOKS ")
+useEffect(async()=>{ //Load For One Step
+
+
+ if(currentBookName.length<1 && !libraryId){
+  const storedArray = await JSON.parse(localStorage.getItem("last_search")) || [];
+  console.log(storedArray)
+  const data=await  suggestionService(storedArray)
+  setCurrentLoading(false)
+
+setBooks(data)
+ }
+
+
+
 },[])
+
+
+
 
 
 
@@ -108,12 +121,21 @@ useEffect(async()=>{
   //LOGIC SEARCH AND CHANGE ROUTER
   const bookSearch = () => {
 
+    
+    
+    console.log(currenPageId,"FETCH METHOD")
+
     const params = new URLSearchParams();
-     params.append('bookName', currentBookName);
+    params.append('bookName', currentBookName);
     currentLibraryId && params.append('libraryId', currentLibraryId);
-    currenPageId && params.append('pageId',currenPageId)
+    currenPageId && params.append('pageId',1)
     currentSubCategoryId &&   params.append('subCategoryId',currentSubCategoryId)
     currentCategoryId && params.append('categoryId',currentCategoryId)
+
+    if(currentBookName.length>1){
+      setSearchToLocalStorage(currentBookName)
+    }
+    
 
     const queryString = params.toString();
 
@@ -123,48 +145,84 @@ useEffect(async()=>{
 
 
 
+  const bookSearchLoadingPrevius = () => {
+
+    
+    setCurrentPageId(currenPageId-1)
+    const params = new URLSearchParams();
+    params.append('bookName', currentBookName);
+    currentLibraryId && params.append('libraryId', currentLibraryId);
+    currenPageId && params.append('pageId',currenPageId)
+    currentSubCategoryId &&   params.append('subCategoryId',currentSubCategoryId)
+    currentCategoryId && params.append('categoryId',currentCategoryId)
+
+
+    const queryString = params.toString();
+
+    router.push(`?${queryString}`);
+
+  };
+
+
+
+
+
+  const bookSearchLoading = () => {
+
+    setCurrentPageId(currenPageId+1)
+
+    const params = new URLSearchParams();
+    params.append('bookName', currentBookName);
+    currentLibraryId && params.append('libraryId', currentLibraryId);
+    currenPageId && params.append('pageId',currenPageId)
+    currentSubCategoryId &&   params.append('subCategoryId',currentSubCategoryId)
+    currentCategoryId && params.append('categoryId',currentCategoryId)
+
+
+    const queryString = params.toString();
+
+    router.push(`?${queryString}`);
+
+  };
+
+
+
+
+  
+
+
   //END QUERY STRING RENDER
 
   useEffect(async() => {
-    const { bookName, libraryId, pageId, subCategoryId } = router.query;
-    setBooks([])
-
-    if(currentSubCategoryId){ 
-    const result =await  book_search_with_sub_category(bookName, parseInt(libraryId), parseInt(pageId), parseInt(subCategoryId));
-    setBooks(result.result)
-
-    console.log('1')
     
-}
+    setBooks([])  
+    setCurrentLoading(true)
+    const { bookName, libraryId, pageId, subCategoryId } = router.query;
+  const result=await last_search(bookName,libraryId,pageId,subCategoryId,categoryId)
+  setCurrentLoading(false)
+  setBooks(result);
 
-if (currentCategoryId && !currentSubCategoryId && !currentBookName){ //SEARCH C
-    const result =await  book_search_wit_category(bookName, parseInt(libraryId), parseInt(pageId), parseInt(currentCategoryId));
-    setBooks(result.result)
-    console.log('2')
-
-}
-
-if(currentLibraryId &&  !currentCategoryId){
-    const result =await  book_search_with_sub_category(bookName, parseInt(libraryId), parseInt(pageId), parseInt(currentCategoryId));
-   console.log("MAN HAMOOZ DARAM")
-
-   console.log(currentCategoryId)
-    setBooks(result.result)
-}
-
-
-
-
-
-
-if(currentCategoryId && currentBookName?.length>1) {
-    const result =await  book_search_with_sub_category(bookName, parseInt(libraryId), parseInt(pageId), parseInt(currentSubCategoryId));
-    setBooks(result.result)
-    console.log('3')
-
-}
 
   }, [router.query]);
+
+
+  const setSearchToLocalStorage = (keyName) => {
+   
+   
+    const storedArray = JSON.parse(localStorage.getItem("last_search")) || ['کامپیوتر','عمومی','الکترونیک','ریاضی','حسابداری','مکانیک'];
+storedArray.push(keyName);
+
+if (storedArray.length > 6) {
+  const startIndex = storedArray.length - 6;
+  storedArray.splice(0, startIndex);
+}
+
+localStorage.setItem("last_search", JSON.stringify(storedArray));
+    
+
+  };
+  
+ 
 
 
 
@@ -184,8 +242,16 @@ if(currentCategoryId && currentBookName?.length>1) {
           <Select
             keyName="libraryName"
             items={libraries}
+            label={"همه کتابخانه ها"}
             defaultValue={libraryId}
-            onChange={(v) => setCurrentLibraryId(Number(v))}
+            
+            onChange={(v) => setCurrentLibraryId(Number(v)) 
+            
+              
+            }
+            
+
+
             ClassName={
               "md:w-1/4  text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500"
             }
@@ -195,7 +261,12 @@ if(currentCategoryId && currentBookName?.length>1) {
           
             keyName="categoryName"
             items={categories}
-            onChange={(v) => setCurrentCategoryId(Number(v))}
+            onChange={(v, keyName) => {
+              setCurrentCategoryId(Number(v));
+              setSearchToLocalStorage(keyName)
+
+            }}
+
             label={"انتخاب همه دسته ها"}
             ClassName={
               "md:w-1/4 lg:mx-4 mx-0 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500"
@@ -238,7 +309,7 @@ if(currentCategoryId && currentBookName?.length>1) {
 
 {!currenLoading && books.map((element,index)=>{
     return    <SingleRowBook
-    key={index}
+    key={element.id}
     imageSource={element.imageSource}
     bookId={element.id}
     categoryName={element.subCategory.category.categoryName}
@@ -248,6 +319,36 @@ if(currentCategoryId && currentBookName?.length>1) {
 })}
 
 </section>
+
+
+
+
+<>
+ {!currenLoading &&  <div className="flex justify-center mx-auto my-16">
+    {/* Previous Button */}
+    {currenPageId>1 && <button
+      onClick={bookSearchLoadingPrevius}
+      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-slate-900 dark:border-gray-700 dark:hover:border-gray-600 dark:text-green-600 dark:hover:text-green-400 dark:hover:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+    >
+      قبلی
+    </button>}
+    {/* Next Button */}
+    <button
+            onClick={bookSearchLoading}
+
+      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-slate-900 dark:border-gray-700 dark:hover:border-gray-600 dark:text-green-600 dark:hover:text-green-400 dark:hover:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+    >
+      بعدی
+    </button>
+  </div>}
+
+</>
+
+
+
+
+
+
 
 
 
