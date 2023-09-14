@@ -7,6 +7,8 @@ import Select from "../common/Select";
 import { AxiosInstance } from "../../utils/http";
 import SingleRowBook from "./SingleRowBook";
 import LoadingScroll from "./LoadingScroll";
+import axios from "axios";
+import NearLibraryComponent from "./NearLibrary";
 
 
 export default function MainComponent() {
@@ -32,6 +34,10 @@ export default function MainComponent() {
 
   const [currenLoading,setCurrentLoading]=useState(true)
   
+  const [nearsetLibrary,setNearsetLibrary]=useState('')
+
+
+  const [defaultValueLibrary,setDefaultValueLibrary]=useState(libraryId)
 
    const [books,setBooks]=useState([])
 
@@ -45,6 +51,7 @@ export default function MainComponent() {
 
   const [subCategories, setSubCategories] = useState([]);
 
+  const [defaultValueLibraryName,setDefaultValueLibraryName]=useState(null)
 
 
 
@@ -113,6 +120,42 @@ setBooks(data)
 
 
 
+useEffect(async() => {
+
+
+  
+
+    await axios.get('http://ip-api.com/json').then((response) => {
+      const location = {
+        x: response.data.lat,
+        y: response.data.lon,
+      };
+
+  
+      
+      
+
+
+  AxiosInstance.post('/home/find-nearset-library',location).then(res=>{
+if(res.data.hits[0]){
+  if(!libraryId){
+    setDefaultValueLibrary(res.data.hits[0].id)
+    setDefaultValueLibraryName(res.data.hits[0].libraryName)
+  
+   }
+}
+ })
+
+  
+
+})
+  
+
+
+}, []);
+
+
+
 
 
   
@@ -122,9 +165,7 @@ setBooks(data)
   const bookSearch = () => {
 
     
-    
-    console.log(currenPageId,"FETCH METHOD")
-
+  
     const params = new URLSearchParams();
     params.append('bookName', currentBookName);
     currentLibraryId && params.append('libraryId', currentLibraryId);
@@ -156,6 +197,7 @@ setBooks(data)
     currentSubCategoryId &&   params.append('subCategoryId',currentSubCategoryId)
     currentCategoryId && params.append('categoryId',currentCategoryId)
 
+  
 
     const queryString = params.toString();
 
@@ -222,14 +264,41 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
 
   };
   
- 
+ const [showMessage,setShowMessage]=useState(true)
+ useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowMessage(false);
+  }, 3000);
 
+  return () => {
+    clearTimeout(timer);
+  };
+}, [defaultValueLibraryName]);
 
 
 
 
   return (
     <>
+
+{defaultValueLibraryName && showMessage && 
+<div
+  id="cookies-simple-with-dismiss-button "
+  className="fixed bottom-0 left-1/2 animate-fade-up   transform -translate-x-1/2 z-[60] sm:max-w-4xl w-full mx-auto p-6"
+>
+  {/* Card */}
+  <div className="p-4 bg-white border text-center  border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex justify-center items-center gap-x-5 sm:gap-x-10">
+      <h2 className="text-sm text-gray-600 dark:text-gray-400 text-center">
+        نزدیک ترین کتابخانه به شما کتابخانه {defaultValueLibraryName} می باشد
+       
+      </h2>
+     
+    </div>
+  </div>
+</div>}
+
+
       <div className="row">
         <div className="lg:hidden">
           <LogoApplication />
@@ -243,7 +312,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
             keyName="libraryName"
             items={libraries}
             label={"همه کتابخانه ها"}
-            defaultValue={libraryId}
+            defaultValue={defaultValueLibrary}
             
             onChange={(v) => setCurrentLibraryId(Number(v)) 
             

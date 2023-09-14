@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Toast from "../Toast/Toast";
+import NearLibraryComponent from "../Home/NearLibrary";
 
 export default function Layout(props) {
   return (
