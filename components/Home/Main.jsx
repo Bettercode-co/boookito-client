@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import book_search, { book_init, book_search_wit_category, book_search_with_sub_category, last_search, suggestionService } from "../../services/search";
+import { last_search, suggestionService } from "../../services/search";
 import { AiOutlineSearch } from "react-icons/ai";
 import LogoApplication from "./Logo";
 import Select from "../common/Select";
@@ -8,7 +8,7 @@ import { AxiosInstance } from "../../utils/http";
 import SingleRowBook from "./SingleRowBook";
 import LoadingScroll from "./LoadingScroll";
 import axios from "axios";
-import NearLibraryComponent from "./NearLibrary";
+import LazyBookComponent from "./LazyBook";
 
 
 export default function MainComponent() {
@@ -101,60 +101,22 @@ export default function MainComponent() {
 
 
 useEffect(async()=>{ //Load For One Step
+  setCurrentLoading(true)
 
+
+  await new Promise(resolve => setTimeout(resolve, 500));
 
  if(currentBookName.length<1 && !libraryId){
   const storedArray = await JSON.parse(localStorage.getItem("last_search")) || [];
   console.log(storedArray)
   const data=await  suggestionService(storedArray)
   setCurrentLoading(false)
-
-setBooks(data)
+  setBooks(data)
  }
 
 
 
 },[])
-
-
-
-
-
-useEffect(async() => {
-
-
-  
-
-    await axios.get('http://ip-api.com/json').then((response) => {
-      const location = {
-        x: response.data.lat,
-        y: response.data.lon,
-      };
-
-  
-      
-      
-
-
-  AxiosInstance.post('/home/find-nearset-library',location).then(res=>{
-if(res.data.hits[0]){
-  if(!libraryId){
-    setDefaultValueLibrary(res.data.hits[0].id)
-    setDefaultValueLibraryName(res.data.hits[0].libraryName)
-  
-   }
-}
- })
-
-  
-
-})
-  
-
-
-}, []);
-
-
 
 
 
@@ -239,6 +201,8 @@ if(res.data.hits[0]){
     
     setBooks([])  
     setCurrentLoading(true)
+    await new Promise(resolve => setTimeout(resolve, 500));
+
     const { bookName, libraryId, pageId, subCategoryId } = router.query;
   const result=await last_search(bookName,libraryId,pageId,subCategoryId,categoryId)
   setCurrentLoading(false)
@@ -264,16 +228,6 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
 
   };
   
- const [showMessage,setShowMessage]=useState(true)
- useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowMessage(false);
-  }, 3000);
-
-  return () => {
-    clearTimeout(timer);
-  };
-}, [defaultValueLibraryName]);
 
 
 
@@ -281,22 +235,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
   return (
     <>
 
-{defaultValueLibraryName && showMessage && 
-<div
-  id="cookies-simple-with-dismiss-button "
-  className="fixed bottom-0 left-1/2 animate-fade-up   transform -translate-x-1/2 z-[60] sm:max-w-4xl w-full mx-auto p-6"
->
-  {/* Card */}
-  <div className="p-4 bg-white border text-center  border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
-    <div className="flex justify-center items-center gap-x-5 sm:gap-x-10">
-      <h2 className="text-sm text-gray-600 dark:text-gray-400 text-center">
-        نزدیک ترین کتابخانه به شما کتابخانه {defaultValueLibraryName} می باشد
-       
-      </h2>
-     
-    </div>
-  </div>
-</div>}
+
 
 
       <div className="row">
@@ -376,7 +315,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
 
 <section className="grid md:grid-cols-4 lg:grid-cols-4 2xl:grid-cols-6 ">
 
-{!currenLoading && books.map((element,index)=>{
+{currenLoading ? <LazyBookComponent/> :  books.map((element,index)=>{
     return    <SingleRowBook
     key={element.id}
     imageSource={element.imageSource}
@@ -384,6 +323,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
     categoryName={element.subCategory.category.categoryName}
     bookName={element.bookName}
     publisherName={element.publisherName}
+    seen={element.seen}
   />
 })}
 

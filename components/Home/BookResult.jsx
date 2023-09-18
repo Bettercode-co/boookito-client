@@ -170,6 +170,7 @@ export default function BookResult() {
           categoryName={element.subCategory.category.categoryName}
           bookName={element.bookName}
           publisherName={element.publisherName}
+          seen={element.seen}
         />
       );
     });
