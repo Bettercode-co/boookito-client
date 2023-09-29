@@ -39,6 +39,7 @@ export default function SingleRowBook(props) {
             <Link href={{ pathname: "/book/[id]" }} as={`/book/${props.bookId}`}>
            <a >
            <img
+           loading="eager"
 src={props.imageSource}
 alt="Just a flower"
               className=" w-full lg:h-56 h-full  object-fill  rounded-2xl"

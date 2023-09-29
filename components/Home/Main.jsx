@@ -313,7 +313,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
           </div>
         </form>
 
-<section className="grid md:grid-cols-4 lg:grid-cols-4 2xl:grid-cols-6 ">
+<section className="grid md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 ">
 
 {currenLoading ? <LazyBookComponent/> :  books.map((element,index)=>{
     return    <SingleRowBook
