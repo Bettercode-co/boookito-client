@@ -261,7 +261,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
 
 
             ClassName={
-              "md:w-1/4  text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500"
+              "md:w-1/4  text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500  "
             }
           />
           <Select
@@ -277,7 +277,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
 
             label={"انتخاب همه دسته ها"}
             ClassName={
-              "md:w-1/4 lg:mx-4 mx-0 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500"
+              "md:w-1/4 lg:mx-4 mx-0 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 "
             }
           />
           <Select
@@ -287,7 +287,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
             onChange={(v) => setCurrentSubCategoryId(Number(v))}
             label={"انتخاب همه زیر دسته ها"}
             ClassName={
-              "md:w-1/4 ml-4 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500"
+              "md:w-1/4 ml-4 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500"
             }
           />
           <div className="relative mt-1 md:w-3/4 md:ml-4 mb-4 md:mb-0  ">
@@ -296,7 +296,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
               type="search"
               
               id="default-search"
-              className=" py-5 pr-5 pl-10 w-full md:text-base  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none dark:focus:ring-green-500 dark:focus:border-green-500"
+              className=" py-5 pr-5 pl-10 w-full md:text-base  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
               placeholder={bookName!=undefined && bookName.length>1 ? bookName : 'جست و جو در بین 40 هزار جلد کتاب'}
               onChange={(e) => setCurrentBookName(e.target.value)}
             />
@@ -337,7 +337,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
     {/* Previous Button */}
     {currenPageId>1 && <button
       onClick={bookSearchLoadingPrevius}
-      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-slate-900 dark:border-gray-700 dark:hover:border-gray-600 dark:text-green-600 dark:hover:text-green-400 dark:hover:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
     >
       قبلی
     </button>}
@@ -345,7 +345,7 @@ localStorage.setItem("last_search", JSON.stringify(storedArray));
     <button
             onClick={bookSearchLoading}
 
-      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-slate-900 dark:border-gray-700 dark:hover:border-gray-600 dark:text-green-600 dark:hover:text-green-400 dark:hover:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+      className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "
     >
       بعدی
     </button>

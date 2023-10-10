@@ -38,10 +38,10 @@ export default function PageBook({ id }) {
             </div>
             <div className="w-full lg:w-1/2 px-4">
               <div className="max-w-md mb-6">
-                <span className="text-xs text-gray-500 dark:text-gray-100 font-bold tracking-wider">
+                <span className="text-xs text-gray-500  font-bold tracking-wider">
                   دسته بندی #{allbooks?.subCategory?.category?.categoryName}
                 </span>
-                <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl dark:text-white md:text-7xl lg:text-2xl font-heading ">
+                <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl  md:text-7xl lg:text-2xl font-heading ">
                   {allbooks.bookName}
                 </h2>
                 <p className="flex items-center mb-6">
@@ -59,28 +59,28 @@ export default function PageBook({ id }) {
               </div>
 
               <div>
-                <h4 className="mb-6 font-heading font-medium">جزییات کتاب </h4>
+                <h4 className="mb-6 text-gray-700 font-semibold font-heading ">جزییات کتاب :</h4>
                 <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                  <h3 className="text-lg text-right font-heading font-medium">
+                  <h3 className="text-lg text-gray-700 text-right font-heading font-medium">
                     نویسندگان : {allbooks?.authorName?.map((value,index)=>{
                       return value+" "
                     })}
                   </h3>
                 </button>
                 <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                  <h3 className="text-lg text-right font-heading font-medium">
+                  <h3 className="text-lg text-gray-700 font-medium text-right font-heading ">
                     مترجمان : {allbooks?.translatorName?.map((value,index)=>{
                       return value+" "
                     })}
                   </h3>
                 </button>
                 <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                  <h3 className="text-lg text-right font-heading font-medium">
+                  <h3 className="text-lg text-gray-700 font-medium text-right font-heading ">
                     انتشارات : {allbooks.publisherName}
                   </h3>
                 </button>
                 <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                  <h3 className="text-lg font-heading font-medium">
+                  <h3 className="text-lg font-heading text-gray-700 font-medium">
                     تعداد صفحات : {Pn.convertEnToPe(allbooks.numberPage)}
                   </h3>
                 </button>

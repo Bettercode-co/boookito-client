@@ -14,7 +14,7 @@ export default function SingleRowBook(props) {
  
  <div className="relative m-3  flex flex-col items-center justify-center ">
   <div className="container">
-    <div className="max-w-md w-full bg-gray-100 shadow-lg rounded-xl p-6">
+    <div className="max-w-md lg:w-full w-96 mx-auto bg-gray-100 shadow-lg rounded-xl p-6">
       <div className="flex flex-col ">
         <div className="">
           <div className="relative h-62 w-full mb-3">
@@ -42,7 +42,7 @@ export default function SingleRowBook(props) {
            loading="eager"
 src={props.imageSource}
 alt="Just a flower"
-              className=" w-full lg:h-56 h-full  object-fill  rounded-2xl"
+              className=" w-96 lg:h-56 h-full  object-fill  rounded-2xl"
             />
            </a>
               </Link>

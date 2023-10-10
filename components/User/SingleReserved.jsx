@@ -29,21 +29,21 @@ export default function SingleReserved({ bookname, image, index, expire, returne
           <img className="w-12 h-12 rounded-md" src={image} alt="Neil image" />
         </div>
         <div className="flex-1 min-w-0 pr-4">
-          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+          <p className="text-sm font-medium text-gray-900 truncate ">
             {bookname}
           </p>
-          <p dir='ltr' className=" text-xs mt-3 font-medium text-gray-900 truncate dark:text-white">
+          <p dir='ltr' className=" text-xs mt-3 font-medium text-gray-900 truncate ">
             {expire}: موعد تحویل 
           </p>
           {/* <p className="text-sm py-10 text-gray-500 truncate dark:text-gray-400 pt-2">
             {expire && returned ==0 > 0 ? `${expire} روز دیگر مهلت دارید` : `موعد رزرو شما به اتمام رسیده `}
           </p> */}
         </div>
-        <div className="hidden md:block justify-items-start float-left mb-5  text-base font-semibold text-gray-900 dark:text-white"> 
+        <div className="hidden md:block justify-items-start float-left mb-5  text-base font-semibold text-gray-900 "> 
         {setStatus()}
        </div>
       </div>
-      <div className="justify-items-start float-left mb-5 md:hidden text-base font-semibold text-gray-900 dark:text-white"> 
+      <div className="justify-items-start float-left mb-5 md:hidden text-base font-semibold text-gray-900 "> 
         {setStatus()}
       </div>
 

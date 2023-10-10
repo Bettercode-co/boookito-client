@@ -25,18 +25,18 @@ const Select = ({ items, onChange, ClassName, label, keyName, defaultValue }) =>
       value={selectedValue}
       onChange={handleOnChangeSelect}
       className={classNames(
-        "w-full md:py-5 py-2 text-sm dark:text-white text-black px-2",
+        "w-full md:py-5 py-2 text-sm   text-black px-2",
         ClassName
       )}
     >
       {label && (
-        <option className="text-sm dark:text-gray-100 text-gray-700 p-1">{label}</option>
+        <option className="text-sm  text-gray-700 p-1">{label}</option>
       )}
   
       {items.length > 0 ? (
         items.map((item) => (
           <option
-            className="text-sm dark:text-gray-100 text-gray-700 p-1"
+            className="text-sm  text-gray-700 p-1"
             key={item.value}
             value={item.id}
           >

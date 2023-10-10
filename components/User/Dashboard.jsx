@@ -50,8 +50,8 @@ export default function dashboard() {
       {error ? (
         <p>شما باید لاگین کنید</p>
       ) : (
-        <div className="mt-6 mx-4 p-4 md:mb-8 bg-white rounded-lg border shadow-md sm:p-6 dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-6 text-base font-semibold text-gray-700 lg:text-xl dark:text-white">
+        <div className="mt-6 mx-4 p-4 md:mb-8 bg-white rounded-lg border shadow-md sm:p-6 ">
+          <h5 className="mb-6 text-base font-semibold text-gray-700 lg:text-xl ">
             کاربر {userData.firstname} {userData.lastname} خوش آمدید
           </h5>
           <p className="text-sm md:text-base font-normal mb-6 text-gray-500 dark:text-gray-400 mt-5">
@@ -62,7 +62,7 @@ export default function dashboard() {
             {items.map((value,index)=>{
               return <li key={index}>
               <Link href={value.href}>
-                 <a className="flex md:flex-col items-center px-3 py-5 text-sm md:text-base   text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                 <a className="flex md:flex-col items-center px-3 py-5 text-sm md:text-base   text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 group hover:shadow ">
                  {value.icon}
                    <span className="flex-1 ml-3 md:ml-0  whitespace-nowrap pr-5 md:pr-0 md:my-2">
                      {value.title}
