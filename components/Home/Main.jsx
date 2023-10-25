@@ -172,15 +172,16 @@ export default function MainComponent() {
       "الکترونیک",
       "ریاضی",
       "حسابداری",
-      "مکانیک",
     ];
     storedArray.push(keyName);
 
-    if (storedArray.length > 6) {
-      const startIndex = storedArray.length - 6;
+    if (storedArray.length > 5) {
+
+      const startIndex = storedArray.length - 5;
       storedArray.splice(0, startIndex);
     }
 
+    
     localStorage.setItem("last_search", JSON.stringify(storedArray));
   };
 
@@ -224,7 +225,7 @@ export default function MainComponent() {
               autoComplete="off"
               type="search"
               id="default-search"
-              className=" py-5 pr-5 pl-10 w-full md:text-base  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
+              className=" py-5 pr-5 pl-10 w-full md:text-base outline-none  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
               placeholder={
                 bookName != undefined && bookName.length > 1
                   ? bookName
