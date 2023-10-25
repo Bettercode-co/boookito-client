@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import React from 'react'
 
-export default function SingleReserved({ bookname, image, index, expire, returned }) {
+export default function SingleReserved({ bookname, image, index, expire, returned ,createdAt ,bookId}) {
   function setStatus(){
     switch (returned) {
       case "PENDING":
@@ -17,7 +18,7 @@ export default function SingleReserved({ bookname, image, index, expire, returne
             break;
 
             case "CLOSED":
-            return <span className=" text-sky-500 border  border-sky-500 text-sm font-medium  px-3 py-0.5 rounded ">انجام شده</span> 
+            return <span className=" text-sky-500 border  border-sky-500 text-sm font-medium  px-3 py-0.5 rounded ">تحویل داده شده</span> 
             break;
     }
   }
@@ -26,18 +27,38 @@ export default function SingleReserved({ bookname, image, index, expire, returne
     <li key={index} className=" py-10  sm:py-4">
       <div className="flex items-center ">
         <div className="flex-shrink-0">
-          <img className="w-12 h-12 rounded-md" src={image} alt="Neil image" />
+        <Link
+                    href={{ pathname: "/book/[id]" }}
+                    as={`/book/${bookId}`}
+                  >
+                    <a>
+          <img className="w-20 h-28 rounded-sm" src={image} alt="Neil image" />
+          </a>
+          </Link>
+
         </div>
         <div className="flex-1 min-w-0 pr-4">
+        <Link
+                    href={{ pathname: "/book/[id]" }}
+                    as={`/book/${bookId}`}
+                  >
+                    <a>
           <p className="text-sm font-medium text-gray-900 truncate ">
             {bookname}
           </p>
-          <p dir='ltr' className=" text-xs mt-3 font-medium text-gray-900 truncate ">
-            {expire}: موعد تحویل 
+          </a>
+          </Link>
+          <p className="text-xs mt-3 font-medium text-gray-700 truncate ">
+           کد کتاب : {bookId}
           </p>
-          {/* <p className="text-sm py-10 text-gray-500 truncate dark:text-gray-400 pt-2">
-            {expire && returned ==0 > 0 ? `${expire} روز دیگر مهلت دارید` : `موعد رزرو شما به اتمام رسیده `}
-          </p> */}
+          <p dir='ltr' className=" text-xs mt-3 font-medium text-gray-900 truncate ">
+            {expire}: تاریخ امانت کتاب 
+          </p>
+       
+          <p dir='ltr' className=" text-xs mt-3 font-medium text-gray-900 truncate ">
+            {createdAt}: موعد تحویل 
+          </p>
+
         </div>
         <div className="hidden md:block justify-items-start float-left mb-5  text-base font-semibold text-gray-900 "> 
         {setStatus()}

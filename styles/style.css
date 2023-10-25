@@ -10,7 +10,7 @@
 body {
     direction: rtl;
     font-family:iranYekan;
-    background-color: #f9fafd;
+    background-color: #f0f3f5;
 }
 .section::-webkit-scrollbar-thumb {
     border-radius: 100px;

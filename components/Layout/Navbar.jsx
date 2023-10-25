@@ -17,14 +17,14 @@ export default function NavbarComponent({ url }) {
   }, [url]);
   return (
     <>
-      <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-white border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
+      <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-transparent border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
         <nav
-          className="max-w-8xl  flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
+          className="lg:max-w-5xl  flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
           aria-label="Global"
         >
           <div className="mr-5 md:mr-8">
             
-              <a href="/" className="flex-none text-xl font-semibold dark:text-white">
+              <a href="/" className="flex-none text-xl font-semibold ">
                 <LogoApplication />
               </a>
           </div>

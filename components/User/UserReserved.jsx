@@ -33,6 +33,10 @@ export default function UserReserved() {
         bookname={element.book.bookName}
         image={element.book.imageSource}
         index={index}
+        createdAt={moment(element.createdAt, "YYYY-MM-DD")
+          .locale("fa")
+          .format("YYYY-MM-DD")}
+          bookId={element.bookid}
       />
     );
   });

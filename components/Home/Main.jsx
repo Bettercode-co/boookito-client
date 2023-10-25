@@ -192,7 +192,7 @@ export default function MainComponent() {
         </div>
 
         <form
-          className="md:mb-8 flex flex-col md:flex-row md:items-center mb-4 lg:mt-8 mt-1 px-4"
+          className="md:mb-8 lg:w-2/3 mx-auto flex flex-col md:flex-row md:items-center mb-4 lg:mt-8 mt-1 px-4"
           onSubmit={(e) => e.preventDefault()}
         >
           <Select
@@ -254,7 +254,7 @@ export default function MainComponent() {
 
 
 
-{!currenLoading && <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
+{!currenLoading && <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
   {books.map((value, index) => {
     return (
       <SingleRowBook
