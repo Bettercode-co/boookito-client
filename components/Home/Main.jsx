@@ -192,7 +192,7 @@ export default function MainComponent() {
         </div>
 
         <form
-          className="md:mb-8 lg:w-2/3 mx-auto flex flex-col md:flex-row md:items-center mb-4 lg:mt-8 mt-1 px-4"
+          className="md:mb-8 lg:w-2/3 mx-auto flex flex-col md:flex-row md:items-center mb-4 lg:mt-8 mt-1 lg:px-0 sm:px-4 "
           onSubmit={(e) => e.preventDefault()}
         >
           <Select
@@ -219,7 +219,7 @@ export default function MainComponent() {
             }
           />
 
-          <div className="relative mt-1 md:w-3/4 md:ml-4 mb-4 md:mb-0  ">
+          <div className="relative mt-1 md:w-3/4  mb-4 md:mb-0  ">
             <input
               autoComplete="off"
               type="search"

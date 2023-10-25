@@ -19,10 +19,10 @@ export default function NavbarComponent({ url }) {
     <>
       <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-transparent border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
         <nav
-          className="lg:max-w-5xl  flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
+          className="lg:w-2/3  flex basis-full items-center  mx-auto  sm:px-6 "
           aria-label="Global"
         >
-          <div className="mr-5 md:mr-8">
+          <div className="mr-5 ">
             
               <a href="/" className="flex-none text-xl font-semibold ">
                 <LogoApplication />
