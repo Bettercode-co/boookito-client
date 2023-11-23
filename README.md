@@ -4,7 +4,11 @@ You can localize this template for your region.
 Of course, this project needs an admin management panel and a back-end that you can [email](mailto:m789219@gmail.com) and receive the back-end of this project privately.
 
 ## Demo 
-![demo](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-home-page.png)
+![Homapage](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-home-page.png)
+![Bookpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-book-page.png)
+![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-dashboard-page.png)
+![Loginpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-login-page.png)
+
 First, run the development server:
 
 ```bash
