@@ -1,7 +1,7 @@
 ## Description
 This project was created in 2021 and is open source. Using this source, you can create an online library management website. Currently, this service is available in the [boookito](https://boookito.ir) domain for Amirkabir Arak University.
 You can localize this template for your region.
-Of course, this project needs an admin management panel and a back-end that you can email and receive the back-end of this project privately.
+Of course, this project needs an admin management panel and a back-end that you can [email](mailto:m789219@gmail.com) and receive the back-end of this project privately.
 
 ## Demo 
 ![demo](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-home-page.png)
