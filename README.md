@@ -1,7 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Description
+This project was created in 2021 and is open source. Using this source, you can create an online library management website. Currently, this service is available in the [boookito](boookito.ir) domain for Amirkabir Arak University.
+You can localize this template for your region
 
-## Getting Started
-
+## Demo 
+![demo](https://github.com/Bettercode-company/boookito-client/blob/master/public/boookito-home-page.png)
 First, run the development server:
 
 ```bash
