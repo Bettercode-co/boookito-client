@@ -35,7 +35,7 @@ export default function NavbarComponent({ url }) {
                 <Link href="/login">
                   <a
                     type="button"
-                    class="py-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-green-600 text-white shadow-sm align-middle   "
+                    className="py-2 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-green-600 text-white shadow-sm align-middle   "
                   >
                     ورود به حساب کاربری
                   </a>

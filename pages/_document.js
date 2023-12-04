@@ -7,7 +7,10 @@ class MyDocument extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <meta name="google-site-verification" content="heGqArkiwYNAQgzcJxjgh6QFvCxpHSCbVdwTwjYlowM" />
-          <meta name="theme-color" content="#fff" />
+          <meta name="theme-color" content="#16a34a" />
+          <link rel="icon" href="favicon.ico" sizes="any" />
+     
+
           
         </Head>
         <body>
