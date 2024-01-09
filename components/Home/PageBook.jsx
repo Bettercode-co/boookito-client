@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/http";
 import { useRouter } from "next/router";
-
+import LazyBookComponent from './LazyBook'
 
 import Pn from "persian-number";
 
@@ -9,10 +9,12 @@ import Pn from "persian-number";
 export default function PageBook({ id }) {
   const [allbooks, setBook] = useState({});
   const router = useRouter();
+  const [loading,setLoading] =useState(true)
   useEffect(() => {
     AxiosInstance.get(`/home/books/${id}`)
       .then(function (response) {
         setBook(response.data.result);
+        setLoading(false)
       })
       .catch(function (err) {
         console.log(err);
@@ -21,7 +23,8 @@ export default function PageBook({ id }) {
 
   return (
     <>
-      <section className="pt-12 pb-24 bg-greenGray-100 rounded-b-10xl overflow-hidden">
+    
+    {loading ? <LazyBookComponent/>  :   <section className="pt-12 pb-24 bg-greenGray-100 rounded-b-10xl overflow-hidden">
         <div className="container px-4 mx-auto">
           <div className="flex flex-wrap -mx-4">
             <div className="w-full px-4"></div>
@@ -39,7 +42,7 @@ export default function PageBook({ id }) {
             <div className="w-full lg:w-1/2 px-4">
               <div className="max-w-md mb-6">
                 <span className="text-xs text-gray-500  font-bold tracking-wider">
-                  دسته بندی #{allbooks?.subCategory?.category?.categoryName}
+                  دسته بندی <span className="bg-green-600 text-white p-1 rounded-md font-normal">#{allbooks?.subCategory?.name}</span>
                 </span>
                 <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl  md:text-7xl lg:text-2xl font-heading ">
                   {allbooks.bookName}
@@ -101,7 +104,8 @@ export default function PageBook({ id }) {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
+    
     </>
   );
 }

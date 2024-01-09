@@ -308,7 +308,7 @@ export default function BookResult() {
               type="search"
               id="default-search"
               className=" py-5 pr-5 pl-10 w-full md:text-base text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none dark:focus:ring-green-500 dark:focus:border-green-500"
-              placeholder="جست و جو در بین بیش از 40 هزار کتاب"
+              placeholder="جست و جو در ss بیش از 40 هزار کتاب"
               onChange={(e) => setBookName(e.target.value)}
             />
             <button

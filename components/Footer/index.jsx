@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {TbBrandInstagram, TbSmartHome,TbUser,TbLogin} from 'react-icons/tb'
+import DesktopFooter from "./Desktop";
 export default function footer() {
   const [hasLoggedIn, setHasLoggedIn] = useState(false);
 
@@ -55,6 +56,8 @@ export default function footer() {
           </div>
         </section>
       </div>
+ 
+ <DesktopFooter/>
     </>
   );
 }
