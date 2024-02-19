@@ -11,34 +11,28 @@ import LazyBookComponent from "./LazyBook";
 
 export default function MainComponent() {
   const router = useRouter(); // new instance for router
-  const { bookName, libraryId, pageId, subCategoryId, categoryId } =
+  const { bookName, libraryId, pageId, categoryId } =
     router.query; //Load Params as Query
 
   //CURRENT STATE
 
   const [currentBookName, setCurrentBookName] = useState(
-    bookName != undefined ? bookName : ""
+    bookName ? bookName : ""
   );
 
   const [currentLibraryId, setCurrentLibraryId] = useState(
-    libraryId != undefined ? parseInt(libraryId) : null
+    libraryId ? parseInt(libraryId) : null
   );
 
   const [currentCategoryId, setCurrentCategoryId] = useState(
     categoryId != undefined ? parseInt(categoryId) : null
   );
 
-  const [currentSubCategoryId, setCurrentSubCategoryId] = useState(
-    subCategoryId != undefined ? parseInt(subCategoryId) : null
-  );
-
   const [currenPageId, setCurrentPageId] = useState(
-    pageId ? parseInt(pageId) : 1
+    pageId != undefined ? parseInt(pageId) : 1
   );
 
   const [currenLoading, setCurrentLoading] = useState(true);
-
-  const [nearsetLibrary, setNearsetLibrary] = useState("");
 
   const [defaultValueLibrary, setDefaultValueLibrary] = useState(libraryId);
 
@@ -49,10 +43,6 @@ export default function MainComponent() {
   const [libraries, SetLibraries] = useState([]);
 
   const [categories, setCategories] = useState([]);
-
-  const [subCategories, setSubCategories] = useState([]);
-
-  const [defaultValueLibraryName, setDefaultValueLibraryName] = useState(null);
 
   //For GetAll Libraries
   useEffect(() => {
@@ -70,43 +60,17 @@ export default function MainComponent() {
       .catch((e) => console.log(e));
   }, [currentLibraryId]);
 
-  //For GetAll Subcategories For CategoryId
-  useEffect(() => {
-    currentCategoryId &&
-      AxiosInstance.get(
-        `/home/subcategories?categoryId=${currentCategoryId}`
-      ).then((res) => {
-        setSubCategories(res.data);
-      });
-  }, [currentCategoryId, currentLibraryId, categoryId, subCategoryId]);
-
-  useEffect(async () => {
-    //Load For One Step
-    setCurrentLoading(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    if (currentBookName.length < 1 && !libraryId) {
-      const storedArray =
-        (await JSON.parse(localStorage.getItem("last_search"))) || [];
-      console.log(storedArray);
-      const data = await suggestionService(storedArray);
-      setCurrentLoading(false);
-      setBooks(data);
-    }
-  }, []);
-
   //LOGIC SEARCH AND CHANGE ROUTER
   const bookSearch = () => {
     const params = new URLSearchParams();
-    params.append("bookName", currentBookName);
+    const newPageNumber = 1
+    setCurrentPageId(newPageNumber)
+    currentBookName && params.append("bookName", currentBookName);
     currentLibraryId && params.append("libraryId", currentLibraryId);
-    currenPageId && params.append("pageId", 1);
-    currentSubCategoryId &&
-      params.append("subCategoryId", currentSubCategoryId);
+    params.append("pageId", newPageNumber);
     currentCategoryId && params.append("categoryId", currentCategoryId);
 
-    if (currentBookName.length > 1) {
+    if (currentBookName?.length > 1) {
       setSearchToLocalStorage(currentBookName);
     }
 
@@ -116,13 +80,12 @@ export default function MainComponent() {
   };
 
   const bookSearchLoadingPrevius = () => {
-    setCurrentPageId(currenPageId - 1);
+    const newPageNumber = currenPageId - 1
+    setCurrentPageId(newPageNumber);
     const params = new URLSearchParams();
-    params.append("bookName", currentBookName);
+    currentBookName && params.append("bookName", currentBookName);
     currentLibraryId && params.append("libraryId", currentLibraryId);
-    currenPageId && params.append("pageId", currenPageId);
-    currentSubCategoryId &&
-      params.append("subCategoryId", currentSubCategoryId);
+    currenPageId && params.append("pageId", newPageNumber);
     currentCategoryId && params.append("categoryId", currentCategoryId);
 
     const queryString = params.toString();
@@ -131,14 +94,12 @@ export default function MainComponent() {
   };
 
   const bookSearchLoading = () => {
-    setCurrentPageId(currenPageId + 1);
-
+    const newPageNumber = currenPageId + 1
+    setCurrentPageId(newPageNumber);
     const params = new URLSearchParams();
-    params.append("bookName", currentBookName);
+    currentBookName && params.append("bookName", currentBookName);
     currentLibraryId && params.append("libraryId", currentLibraryId);
-    currenPageId && params.append("pageId", currenPageId);
-    currentSubCategoryId &&
-      params.append("subCategoryId", currentSubCategoryId);
+    currenPageId && params.append("pageId", newPageNumber);
     currentCategoryId && params.append("categoryId", currentCategoryId);
 
     const queryString = params.toString();
@@ -153,12 +114,16 @@ export default function MainComponent() {
     setCurrentLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const { bookName, libraryId, pageId, subCategoryId } = router.query;
+    const { bookName, libraryId, pageId, categoryId } = router.query;
+    console.log(router.query)
+    setCurrentCategoryId(categoryId)
+    setCurrentBookName(bookName)
+    setCurrentLibraryId(libraryId)
+    setCurrentPageId(parseInt(pageId))
     const result = await last_search(
       bookName,
       libraryId,
       pageId,
-      subCategoryId,
       categoryId
     );
     setCurrentLoading(false);
@@ -181,7 +146,7 @@ export default function MainComponent() {
       storedArray.splice(0, startIndex);
     }
 
-    
+
     localStorage.setItem("last_search", JSON.stringify(storedArray));
   };
 
@@ -200,14 +165,14 @@ export default function MainComponent() {
             keyName="libraryName"
             items={libraries}
             label={"همه کتابخانه ها"}
-            defaultValue={defaultValueLibrary}
+            defaultValue={currentLibraryId}
             onChange={(v) => setCurrentLibraryId(Number(v))}
             ClassName={
               "md:w-1/4  text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500  "
             }
           />
           <Select
-            defaultValue={categoryId}
+            defaultValue={currentCategoryId}
             keyName="categoryName"
             items={categories}
             onChange={(v, keyName) => {
@@ -226,12 +191,9 @@ export default function MainComponent() {
               type="search"
               id="default-search"
               className=" py-5 pr-5 pl-10 w-full md:text-base outline-none  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
-              placeholder={
-                bookName != undefined && bookName.length > 1
-                  ? bookName
-                  : "جست و جو در بین 40 هزار جلد کتاب"
-              }
+              placeholder={"جست و جو در بین 40 هزار جلد کتاب"}
               onChange={(e) => setCurrentBookName(e.target.value)}
+              value={currentBookName}
             />
             <button
               onClick={bookSearch}
@@ -248,28 +210,28 @@ export default function MainComponent() {
 
 
 
-     {currenLoading &&    <div className="flex items-center justify-center ">
-<LazyBookComponent/>
+        {currenLoading && <div className="flex items-center justify-center ">
+          <LazyBookComponent />
 
-</div>}
+        </div>}
 
 
 
-{!currenLoading && <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
-  {books.map((value, index) => {
-    return (
-      <SingleRowBook
-        key={value.id}
-        imageSource={value.imageSource}
-        bookId={value.id}
-        categoryName={value.subCategory.category.categoryName}
-        bookName={value.bookName}
-        publisherName={value.publisherName}
-        seen={value.seen}
-      />
-    );
-  })}
-</section> }
+        {!currenLoading && <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
+          {books.map((value, index) => {
+            return (
+              <SingleRowBook
+                key={value.id}
+                imageSource={value.imageSource}
+                bookId={value.id}
+                categoryName={value.subCategory.category.categoryName}
+                bookName={value.bookName}
+                publisherName={value.publisherName}
+                seen={value.seen}
+              />
+            );
+          })}
+        </section>}
         <>
           {!currenLoading && (
             <div className="flex justify-center mx-auto my-16">
