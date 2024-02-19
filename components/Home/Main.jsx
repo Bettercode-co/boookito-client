@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { last_search, suggestionService } from "../../services/search";
+import { last_search } from "../../services/search";
 import { AiOutlineSearch } from "react-icons/ai";
 import LogoApplication from "./Logo";
 import Select from "../common/Select";
@@ -11,8 +11,7 @@ import LazyBookComponent from "./LazyBook";
 
 export default function MainComponent() {
   const router = useRouter(); // new instance for router
-  const { bookName, libraryId, pageId, categoryId } =
-    router.query; //Load Params as Query
+  const { bookName, libraryId, pageId, categoryId } = router.query; //Load Params as Query
 
   //CURRENT STATE
 
@@ -63,16 +62,12 @@ export default function MainComponent() {
   //LOGIC SEARCH AND CHANGE ROUTER
   const bookSearch = () => {
     const params = new URLSearchParams();
-    const newPageNumber = 1
-    setCurrentPageId(newPageNumber)
+    const newPageNumber = 1;
+    setCurrentPageId(newPageNumber);
     currentBookName && params.append("bookName", currentBookName);
     currentLibraryId && params.append("libraryId", currentLibraryId);
     params.append("pageId", newPageNumber);
     currentCategoryId && params.append("categoryId", currentCategoryId);
-
-    if (currentBookName?.length > 1) {
-      setSearchToLocalStorage(currentBookName);
-    }
 
     const queryString = params.toString();
 
@@ -80,7 +75,7 @@ export default function MainComponent() {
   };
 
   const bookSearchLoadingPrevius = () => {
-    const newPageNumber = currenPageId - 1
+    const newPageNumber = currenPageId - 1;
     setCurrentPageId(newPageNumber);
     const params = new URLSearchParams();
     currentBookName && params.append("bookName", currentBookName);
@@ -94,7 +89,7 @@ export default function MainComponent() {
   };
 
   const bookSearchLoading = () => {
-    const newPageNumber = currenPageId + 1
+    const newPageNumber = currenPageId + 1;
     setCurrentPageId(newPageNumber);
     const params = new URLSearchParams();
     currentBookName && params.append("bookName", currentBookName);
@@ -115,40 +110,15 @@ export default function MainComponent() {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     const { bookName, libraryId, pageId, categoryId } = router.query;
-    console.log(router.query)
-    setCurrentCategoryId(categoryId)
-    setCurrentBookName(bookName)
-    setCurrentLibraryId(libraryId)
-    setCurrentPageId(parseInt(pageId))
-    const result = await last_search(
-      bookName,
-      libraryId,
-      pageId,
-      categoryId
-    );
+    console.log(router.query);
+    setCurrentCategoryId(categoryId);
+    setCurrentBookName(bookName);
+    setCurrentLibraryId(libraryId);
+    setCurrentPageId(parseInt(pageId));
+    const result = await last_search(bookName, libraryId, pageId, categoryId);
     setCurrentLoading(false);
     setBooks(result);
   }, [router.query]);
-
-  const setSearchToLocalStorage = (keyName) => {
-    const storedArray = JSON.parse(localStorage.getItem("last_search")) || [
-      "کامپیوتر",
-      "عمومی",
-      "الکترونیک",
-      "ریاضی",
-      "حسابداری",
-    ];
-    storedArray.push(keyName);
-
-    if (storedArray.length > 5) {
-
-      const startIndex = storedArray.length - 5;
-      storedArray.splice(0, startIndex);
-    }
-
-
-    localStorage.setItem("last_search", JSON.stringify(storedArray));
-  };
 
   return (
     <>
@@ -177,7 +147,6 @@ export default function MainComponent() {
             items={categories}
             onChange={(v, keyName) => {
               setCurrentCategoryId(Number(v));
-              setSearchToLocalStorage(keyName);
             }}
             label={"انتخاب همه دسته ها"}
             ClassName={
@@ -208,30 +177,29 @@ export default function MainComponent() {
           </div>
         </form>
 
+        {currenLoading && (
+          <div className="flex items-center justify-center ">
+            <LazyBookComponent />
+          </div>
+        )}
 
-
-        {currenLoading && <div className="flex items-center justify-center ">
-          <LazyBookComponent />
-
-        </div>}
-
-
-
-        {!currenLoading && <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
-          {books.map((value, index) => {
-            return (
-              <SingleRowBook
-                key={value.id}
-                imageSource={value.imageSource}
-                bookId={value.id}
-                categoryName={value.subCategory.category.categoryName}
-                bookName={value.bookName}
-                publisherName={value.publisherName}
-                seen={value.seen}
-              />
-            );
-          })}
-        </section>}
+        {!currenLoading && (
+          <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
+            {books.map((value, index) => {
+              return (
+                <SingleRowBook
+                  key={value.id}
+                  imageSource={value.imageSource}
+                  bookId={value.id}
+                  categoryName={value.subCategory.category.categoryName}
+                  bookName={value.bookName}
+                  publisherName={value.publisherName}
+                  seen={value.seen}
+                />
+              );
+            })}
+          </section>
+        )}
         <>
           {!currenLoading && (
             <div className="flex justify-center mx-auto my-16">

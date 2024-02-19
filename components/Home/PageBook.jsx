@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import LazyBookComponent from './LazyBook'
 
 import Pn from "persian-number";
+import Head from "next/head";
 
 
 export default function PageBook({ id }) {
@@ -23,6 +24,8 @@ export default function PageBook({ id }) {
 
   return (
     <>
+   
+
     
     {loading ? <LazyBookComponent/>  :   <section className="pt-12 pb-24 bg-greenGray-100 rounded-b-10xl overflow-hidden">
         <div className="container px-4 mx-auto">
@@ -105,7 +108,7 @@ export default function PageBook({ id }) {
           </div>
         </div>
       </section>}
-    
+    <div id="pos-article-display-93620"></div>
     </>
   );
 }
