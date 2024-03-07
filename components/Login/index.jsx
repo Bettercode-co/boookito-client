@@ -45,11 +45,9 @@ export default function Login() {
             },
           }).then((res) => {
             localStorage.setItem("image", res.data.avatarSource);
-    
           });
           setTimeout(() => {
             router.push("/");
-            
           }, 1500);
         } else {
           toast.error(res.data?.message);
@@ -63,9 +61,9 @@ export default function Login() {
 
   return (
     <>
-    <Head>
-      <title>بوکیتو-ورود به حساب کاربری</title>
-    </Head>
+      <Head>
+        <title>بوکیتو-ورود به حساب کاربری</title>
+      </Head>
       {changePassword ? (
         <ChangePassword username={username} />
       ) : (
@@ -101,7 +99,7 @@ export default function Login() {
                       autoComplete="off"
                       required
                       value={Pn.convertEnToPe(username)}
-                      className=" text-center h-12 appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                      className=" text-center h-12 bg-transparent appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                       placeholder="نام کاربری "
                     />
                     <input
@@ -115,7 +113,7 @@ export default function Login() {
                       }
                       autoComplete="off"
                       required
-                      className="mt-5 text-center h-12 appearance-none rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                      className="mt-5 text-center h-12 bg-transparent appearance-none rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                       placeholder="رمز عبور "
                     />
                   </div>
@@ -124,7 +122,7 @@ export default function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="mt-8    group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="mt-8 mb-3    group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                       <svg
@@ -144,9 +142,9 @@ export default function Login() {
                     </span>
                     ورود
                   </button>
-              
+
                   <Link href="/user/forgetpassword">
-                    <a className="text-xs text-green-600 ">
+                    <a className="text-xs  text-green-600 ">
                       رمز عبور خود را فراموش کرده ام
                     </a>
                   </Link>

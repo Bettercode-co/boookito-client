@@ -83,7 +83,7 @@ const ForgetPassword = () => {
                   minLength={10}
                   type="text"
                   autoComplete="off"
-                  className=" text-center h-12 appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className=" text-center bg-transparent h-12 appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="کدملی"
                 />
                 {formik.errors.username && formik.touched.username && (
@@ -104,7 +104,7 @@ const ForgetPassword = () => {
                   type="text"
                   name="studentId"
                   autoComplete="off"
-                  className=" text-center h-12 appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className=" text-center bg-transparent h-12 appearance-textfield rounded-lg  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="شماره دانشجویی"
                 />
                 {formik.errors.studentId && formik.touched.studentId && (
