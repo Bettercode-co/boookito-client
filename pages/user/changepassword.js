@@ -1,10 +1,8 @@
-import React from 'react';
-import ChangePasswordComponent from '../../components/User/ChangePassword';
+import React from "react";
+import ChangePasswordComponent from "../../components/User/ChangePassword";
 
 const Changepassword = () => {
-    return (
-      <ChangePasswordComponent/>
-    );
-}
+  return <ChangePasswordComponent />;
+};
 
 export default Changepassword;

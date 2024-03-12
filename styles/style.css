@@ -1,25 +1,23 @@
 @font-face {
-    font-family: IRANSans;
-    src: url('../public/IRANSans.ttf');
+  font-family: iransans;
+  src: url("../public/fonts/iransans.ttf");
 }
 @font-face {
-    font-family: iranYekan;
-    src: url('../public/AnyConv.com__iranyekanwebmedium.2d4f96e5.ttf');
+  font-family: iranYekan;
+  src: url("../public/fonts/iranyekan.ttf");
 }
 
 body {
-    direction: rtl;
-    font-family:iranYekan;
-    background-color: #f0f3f5;
+  direction: rtl;
+  font-family: iransans;
+  background-color: #f0f3f5;
 }
 .section::-webkit-scrollbar-thumb {
-    border-radius: 100px;
-    background: #8070D4;
-    border: 6px solid rgba(0,0,0,0.2);
+  border-radius: 100px;
+  background: #8070d4;
+  border: 6px solid rgba(0, 0, 0, 0.2);
 }
-.Toastify__toast-body{
-
-    font-family:IRANSans;
-    font-size: 12px;
-    
+.Toastify__toast-body {
+  font-family: IRANSans;
+  font-size: 12px;
 }

@@ -1,32 +1,29 @@
 import Link from "next/link";
 import LogoApplication from "../Home/Logo";
 import { useEffect, useState } from "react";
-import { AxiosInstance } from "../../utils/http";
 
 export default function NavbarComponent({ url }) {
   const [login, setLogin] = useState(false);
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setLogin(true);
-      setImage(localStorage.getItem("image"));
-    } else {
-      setLogin(false);
-    }
+    const token = localStorage.getItem("token");
+    setLogin(token ? true : false);
+    setImage(token ? localStorage.getItem("image") : null);
   }, [url]);
   return (
     <>
       <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-transparent border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
         <nav
-          className="lg:w-2/3  flex basis-full items-center  mx-auto  sm:px-6 "
+          className="lg:w-2/3  flex basis-full items-center  mx-auto   "
           aria-label="Global"
         >
-          <div className="mr-5 ">
-            
-              <a href="/" className="flex-none text-xl font-semibold ">
+          <div className=" ">
+            <Link href="/">
+              <a href="" className="flex-none text-xl font-semibold ">
                 <LogoApplication />
               </a>
+            </Link>
           </div>
           <div className="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
             <div className="hidden sm:block"></div>

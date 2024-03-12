@@ -4,13 +4,9 @@ import PageBook from "../../../components/Home/PageBook";
 
 const provider = () => {
   const router = useRouter();
+
   const { id } = router.query;
-  return (
-    <>
-      <PageBook id={id} />
-      <div id="pos-article-display-93620"></div>
-    </>
-  );
+  return <PageBook id={id} />;
 };
 
 export default provider;

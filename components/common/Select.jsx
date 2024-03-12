@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
+import React, { useState, useEffect } from "react";
+import classNames from "classnames";
 
-const Select = ({ items, onChange, ClassName, label, keyName, defaultValue }) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const Select = ({
+  items,
+  onChange,
+  ClassName,
+  label,
+  keyName,
+  defaultValue,
+}) => {
+  const [selectedValue, setSelectedValue] = useState("");
 
   useEffect(() => {
     if (defaultValue) {
       setSelectedValue(defaultValue);
     }
   }, [defaultValue]);
-
 
   const handleOnChangeSelect = (event) => {
     const val = event.target.value;
@@ -18,10 +24,9 @@ const Select = ({ items, onChange, ClassName, label, keyName, defaultValue }) =>
     setSelectedValue(val);
     onChange(val, selectedText, event);
   };
-  
+
   return (
     <select
-    
       value={selectedValue}
       onChange={handleOnChangeSelect}
       className={classNames(
@@ -29,10 +34,8 @@ const Select = ({ items, onChange, ClassName, label, keyName, defaultValue }) =>
         ClassName
       )}
     >
-      {label && (
-        <option className="text-sm  text-gray-700 p-1">{label}</option>
-      )}
-  
+      {label && <option className="text-sm  text-gray-700 p-1">{label}</option>}
+
       {items.length > 0 ? (
         items.map((item) => (
           <option
@@ -48,7 +51,6 @@ const Select = ({ items, onChange, ClassName, label, keyName, defaultValue }) =>
       )}
     </select>
   );
-
 };
 
 export default Select;

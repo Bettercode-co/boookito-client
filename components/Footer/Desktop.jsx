@@ -2,25 +2,16 @@ export default function DesktopFooter() {
   return (
     <footer className="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
       <div className="text-center">
-        <div>
-          <a
-            className="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            href="#"
-            aria-label="Brand"
-          >
-            بوکیتو
-          </a>
-        </div>
-        {/* End Col */}
-        <div className="mt-3">
-          <a href="https://markazi-tvu.ac.ir/">
+       
+       
+        <div className="my-8">
+
+          
+          
           <p className="text-gray-500">
-          تمامی حقوق برای دانشگاه فنی حرفه ای استان مرکزی محفوظ است
+            طراحی و توسعه توسط تیم <a href="https://bettercode.ir"> BetterCode </a>
           </p>
-          <p className="text-gray-500">
-            طراحی و توسعه توسط <a href="https://mohammadhasanii.ir">محمد حسنی</a>
-          </p>
-          </a>
+
         </div>
         {/* Social Brands */}
         <div className="mt-3 space-x-2">
@@ -42,7 +33,7 @@ export default function DesktopFooter() {
           </a>
           <a
             className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
-            href="https://github.com/mohammadhasanii"
+            href="https://github.com/bettercode-co"
           >
             <svg
               className="flex-shrink-0 w-3.5 h-3.5"
