@@ -12,7 +12,7 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#16a34a" />
 
-          <link rel="icon" type="image/svg+xml" href="/last-logo.svg"></link>
+          <link rel="icon" type="image/svg+xml" href="/images/logo.svg"></link>
         </Head>
         <body>
           <Main />

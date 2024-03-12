@@ -54,7 +54,7 @@ const ChangePasswordComponent = () => {
               <LogoApplication />
             </div>
 
-            <span className="font-medium text-gray-500 ">
+            <span className="font-medium text-gray-500  ">
               برای ست کردن رمز عبور جدید رمز عبور فعلی خود را وارد کنید
             </span>
             <form
@@ -70,7 +70,7 @@ const ChangePasswordComponent = () => {
                   value={formik.values.password}
                   id="pass"
                   autoComplete="off"
-                  className="bg-gray-50 text-center   border-gray-300 text-green-600 sm:text-sm rounded-lg focus:ring-green-600 focus:outline-none border-2 focus:border-green-600 block w-full p-2.5 "
+                  className="bg-gray-50 text-center   border-gray-300 text-green-600 sm:text-sm rounded-lg focus:ring-green-600 focus:outline-none border focus:border-green-600 block w-full p-2.5 "
                   placeholder="رمز عبور فعلی"
                 />
                 {formik.errors.password && formik.touched.password && (
@@ -81,12 +81,6 @@ const ChangePasswordComponent = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="11"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  رمز عبور جدید
-                </label>
                 <input
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -95,8 +89,8 @@ const ChangePasswordComponent = () => {
                   name="newPassword"
                   autoComplete="off"
                   id="11"
-                  className="bg-gray-50 border text-left border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="*****"
+                  className="bg-gray-50 text-center   border-gray-300 text-green-600 sm:text-sm rounded-lg focus:ring-green-600 focus:outline-none border focus:border-green-600 block w-full p-2.5 "
+                  placeholder="رمز عبور جدید"
                 />
                 {formik.errors.newPassword && formik.touched.newPassword && (
                   <div className="my-2 text-red-500 text-xs">
@@ -105,12 +99,6 @@ const ChangePasswordComponent = () => {
                 )}
               </div>
               <div>
-                <label
-                  htmlFor="verifyNewnewPassword"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  تکرار رمز عبور جدید
-                </label>
                 <input
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -119,8 +107,9 @@ const ChangePasswordComponent = () => {
                   name="verifyNewPassword"
                   id="verifyNewPassword"
                   autoComplete="off"
-                  className="bg-gray-50 border text-left border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="*****"
+                  className="bg-gray-50 text-center   border-gray-300 text-green-600 sm:text-sm rounded-lg focus:ring-green-600 focus:outline-none border focus:border-green-600 block w-full p-2.5 "
+                  placeholder="تکرار رمز عبور جدید
+                  "
                 />
                 {formik.errors.verifyNewPassword &&
                   formik.touched.verifyNewPassword && (
