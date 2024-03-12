@@ -4,7 +4,7 @@ You can localize this template for your region.
 Of course, this project needs an admin management panel and a back-end that you can [email](mailto:m789219@gmail.com) and receive the back-end of this project privately.
 
 ## <h4> HomePage </h4> 
-![Homapage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/home-page.PNG){width="20px"}
+![Homapage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/home-page.PNG)
 ## <h4> BookPage </h4> 
 ![Bookpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/book-page.PNG)
 ## <h4> LoginPage </h4> 
