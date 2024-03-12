@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChangePassword from "./ChangePassword";
 import { useRouter } from "next/router";
-import Toast from "../Toast/Toast";
+
 import { AxiosInstance } from "../../utils/http/index";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -15,7 +15,7 @@ export default function Login() {
   const [changePassword, setChangePassword] = useState(false);
   const [login, setLogin] = useState(false);
   const [error, setError] = useState(false);
-  const [phonenumber, setPhonenumber] = useState(false);
+
   const router = useRouter();
 
   const handleOnChange = () => {

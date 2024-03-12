@@ -1,13 +1,14 @@
 import "../styles/globals.css";
 import "../styles/style.css";
 import Layout from "../components/Layout";
-import Footer from "../components/Footer";
+
 import NextNProgress from "nextjs-progressbar";
 import { useState } from "react";
 import Login from "../components/Login";
 import NavbarComponent from "../components/Layout/Navbar";
 import { useRouter } from "next/router";
 import ApiMiddleware from "../components/Middleware/Up";
+import DesktopFooter from "../components/Footer/Desktop";
 
 function MyApp({ Component, pageProps }) {
   const [login, setLogin] = useState(true);
@@ -22,11 +23,11 @@ function MyApp({ Component, pageProps }) {
           <NavbarComponent url={nowRouter} />
 
           <NextNProgress
-            options={{ easing: "ease", speed: 500 }}
+            options={{ easing: "ease", speed: 700 }}
             color="#22c55e"
             startPosition={0.3}
             stopDelayMs={50}
-            height={3}
+            height={4}
             showOnShallow={true}
           />
           <main className="grid grid-cols-12 mx-auto container  md:gap-x-4 min-h-screen">
@@ -34,7 +35,7 @@ function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </div>
           </main>
-          <Footer />
+          <DesktopFooter />
         </Layout>
       ) : (
         <Login />

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import LazyBookComponent from "./LazyBook";
 
 import Pn from "persian-number";
-import Head from "next/head";
+
 import Image from "next/image";
 
 export default function PageBook({ id }) {
@@ -117,7 +117,7 @@ export default function PageBook({ id }) {
 
                 <div className="flex flex-wrap -mx-2 mb-12 mt-10">
                   <div className="w-full md:w-2/3 px-2 mb-2 md:mb-0">
-                    <a className="block    py-4 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 hover:bg-green-600 rounded-xl">
+                    <a className="block    py-4 px-2 text-sm  font-heading  tracking-tighter  text-white text-center bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 hover:bg-green-600 rounded-xl">
                       {allbooks.totalEntity > 0 ? (
                         <span className="font-semibold text-gray-100">
                           کتاب موجود است و میتوانید حضوری کتاب را امانت بگیرید

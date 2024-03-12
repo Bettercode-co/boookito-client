@@ -7,7 +7,7 @@ const Logout = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.clear();
-      router.push("/login");
+      router.push("/");
     }
   });
 

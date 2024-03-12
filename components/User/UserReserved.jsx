@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/http";
 import SingleReserved from "./SingleReserved";
 import moment from "jalali-moment";
+import Pn from "persian-number";
 
 export default function UserReserved() {
   const [order, setOrder] = useState([]);
@@ -53,7 +54,7 @@ export default function UserReserved() {
             className="text-sm font-medium text-blue-600 hover:underline "
           >
             <span className="mt-6 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs  leading-none text-white bg-green-600 rounded-full">
-              {count} امانت فعال
+              {Pn.convertEnToPe(count)} امانت فعال
             </span>
           </a>
         </div>

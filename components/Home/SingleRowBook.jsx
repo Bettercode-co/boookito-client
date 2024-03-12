@@ -35,7 +35,7 @@ export default function SingleRowBook(props) {
                   placeholder="blur"
                   blurDataURL="YOUR_GENERATED_BLURHASH_STRING"
                   quality={1}
-                  layout="responsive"
+                  layout="fill"
                   objectFit="contain"
                   className="rounded-md"
                 />

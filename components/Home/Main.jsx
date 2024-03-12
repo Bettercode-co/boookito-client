@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { last_search } from "../../services/search";
 import { AiOutlineSearch } from "react-icons/ai";
-import LogoApplication from "./Logo";
 import Select from "../common/Select";
 import { AxiosInstance } from "../../utils/http";
 import SingleRowBook from "./SingleRowBook";
@@ -123,9 +122,8 @@ export default function MainComponent() {
   return (
     <>
       <div className="row">
-        <div className="lg:hidden">
-          <LogoApplication />
-        </div>
+        
+        
 
         <form
           className="md:mb-8 lg:w-2/3 mx-auto flex flex-col md:flex-row md:items-center mb-4 lg:mt-8 mt-1 lg:px-0 sm:px-4 "
@@ -138,7 +136,7 @@ export default function MainComponent() {
             defaultValue={currentLibraryId}
             onChange={(v) => setCurrentLibraryId(Number(v))}
             ClassName={
-              "md:w-1/4  text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500  "
+              "md:w-1/4  text-gray-700 rounded-lg bg-gray-50 border border-gray-300 focus:ring-1 focus:outline-none  focus:ring-green-500 focus:border-green-500  "
             }
           />
           <Select
@@ -150,7 +148,7 @@ export default function MainComponent() {
             }}
             label={"انتخاب همه دسته ها"}
             ClassName={
-              "md:w-1/4 lg:mx-4 mx-0 mt-1 text-gray-900 rounded-lg bg-gray-50 border border-gray-300 focus:ring-green-500 focus:border-green-500 "
+              "md:w-1/4 lg:mx-4 mx-0 mt-1 text-gray-700 rounded-lg bg-gray-50 border focus:ring-1 focus:outline-none border-gray-300 focus:ring-green-500 focus:border-green-500 "
             }
           />
 
@@ -159,7 +157,7 @@ export default function MainComponent() {
               autoComplete="off"
               type="search"
               id="default-search"
-              className=" py-5 pr-5 pl-10 w-full md:text-base outline-none  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
+              className=" py-5 pr-5 pl-10 w-full md:text-base outline-none focus:ring-1  text-sm rounded-lg text-gray-900 bg-gray-50  border border-gray-300 focus:ring-green-500 focus:border-green-500"
               placeholder={"جست و جو در بین 40 هزار جلد کتاب"}
               onChange={(e) => setCurrentBookName(e.target.value)}
               value={currentBookName}
@@ -212,7 +210,7 @@ export default function MainComponent() {
                   قبلی
                 </button>
               )}
-              {/* Next Button */}
+
               <button
                 onClick={bookSearchLoading}
                 className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 "

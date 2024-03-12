@@ -13,7 +13,7 @@ export default function NavbarComponent({ url }) {
   }, [url]);
   return (
     <>
-      <header className="hidden w-full  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-transparent border-b shadow-lg  rounded-lg text-sm py-2  dark:bg-slate-900 dark:border-gray-700">
+      <header className=" w-full p-4  lg:px-36   lg:block    flex-wrap sm:justify-start sm:flex-nowrap z-50  bg-transparent border-b shadow-lg  rounded-lg text-sm py-2 ">
         <nav
           className="lg:w-2/3  flex basis-full items-center  mx-auto   "
           aria-label="Global"
@@ -47,7 +47,7 @@ export default function NavbarComponent({ url }) {
                     <a
                       id="hs-dropdown-with-header"
                       type="button"
-                      className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
+                      className="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 "
                     >
                       <img
                         className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
