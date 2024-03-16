@@ -44,7 +44,7 @@ export default function Login() {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }).then((res) => {
-            localStorage.setItem("image", res.data.avatarSource);
+
           });
           setTimeout(() => {
             router.push("/");

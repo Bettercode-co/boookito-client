@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 
 export default function NavbarComponent({ url }) {
   const [login, setLogin] = useState(false);
-  const [image, setImage] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setLogin(token ? true : false);
-    setImage(token ? localStorage.getItem("image") : null);
   }, [url]);
   return (
     <>
@@ -51,7 +49,7 @@ export default function NavbarComponent({ url }) {
                     >
                       <img
                         className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
-                        src={image}
+                        src="https://static.vecteezy.com/system/resources/previews/022/450/297/original/3d-minimal-purple-user-profile-avatar-icon-in-circle-white-frame-design-vector.jpg"
                         alt="Image Description"
                       />
                     </a>

@@ -1,18 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/http";
-import Toast from "../Toast/Toast";
-import axios from "axios";
-import { toast } from "react-toastify";
 
 export default function EditProfile() {
   const [accountdata, setAccountData] = useState({});
-  const [userBookGram, setUserBookGram] = useState("");
-  const [file, setFile] = useState();
-  const [fileUrl, setFileUrl] = useState();
-  const [empty, setEmpty] = useState(false);
-  const [minlengthError, setMinlengthError] = useState(false);
-  const [successChange, setsuccessChange] = useState(false);
-  const [img, setImg] = useState("");
 
   useEffect(() => {
     AxiosInstance.get("/user/myprofile", {
@@ -25,116 +15,22 @@ export default function EditProfile() {
         setUserBookGram(res.data.usernameSocial);
       })
       .catch((err) => err);
-  }, [file, accountdata.username_bookgram]);
-
-  const changeUsername = async (e) => {
-    setsuccessChange(false);
-    setEmpty(false);
-    e.preventDefault();
-    try {
-      if (userBookGram.trim().length < 5) {
-        setMinlengthError(true);
-      } else if (userBookGram.trim().length > 0) {
-        await AxiosInstance.post(
-          "user/changeusername",
-          { usernameSocial: userBookGram },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        ).then((res) => {
-          setMinlengthError(false);
-          setsuccessChange(true);
-        });
-      } else {
-        setEmpty(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const uploadFile = (e) => {
-    setFile(e.target.files[0]);
-    const [file] = e.target.files;
-    if (e.target.files.length < 1) {
-      setImg("");
-    } else {
-      setImg(URL.createObjectURL(file));
-      const formdata = new FormData();
-      formdata.append("file", file);
-      if (file) {
-        axios
-          .post("https://api.boookito.ir/api/v2/uploader", formdata, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          })
-          .then((res) => {
-            setFileUrl(res.data.url);
-          });
-      } else {
-      }
-    }
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    AxiosInstance.post(
-      "/user/changeavatar",
-      { src: fileUrl },
-      {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      }
-    )
-      .then((res) => {
-        toast.success("پروفایل شما با موفقیت تغییر کرد", { autoClose: 2100 });
-      })
-      .catch((e) => console.log(e));
-  };
+  }, []);
 
   return (
     <>
       <div className=" md:mt-10 max-w-4xl mx-auto md:mb-8 bg-white  rounded-lg shadow-xl px-4">
         <div className="flex flex-col  ">
-          <form
-            className="mb-10 "
-            onSubmit={submitHandler}
-            encType="multipart/form-data"
-          >
+          <form className="mb-10 ">
             <div className=" mt-8 md:h-auto flex flex-col justify-center items-center ">
               <div className="w-24 h-24 mb-5  ">
                 <img
                   loading="lazy"
                   className="w-full p-1  border-2 border-green-500  h-full rounded-full shadow-lg"
-                  src={img ? img : accountdata.avatarSource}
+                  src="https://static.vecteezy.com/system/resources/previews/022/450/297/original/3d-minimal-purple-user-profile-avatar-icon-in-circle-white-frame-design-vector.jpg"
                   alt="Bonnie image"
                 />
               </div>
-
-              {file ? (
-                <label className="cursor-pointer">
-                  <button
-                    type="submit"
-                    className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-green-400 rounded-lg border border-gray-200 hover:bg-green-600 hover:text-white focus:z-10 focus:ring-4 "
-                  >
-                    ثبت تغییرات
-                  </button>
-                </label>
-              ) : (
-                <label className="cursor-pointer">
-                  <span className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">
-                    ویرایش عکس پروفایل
-                  </span>
-                  <input
-                    onChange={uploadFile}
-                    type="file"
-                    className="hidden"
-                    accept="image/png, image/jpeg"
-                  />
-                </label>
-              )}
             </div>
           </form>
 
