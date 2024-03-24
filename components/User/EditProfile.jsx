@@ -27,7 +27,7 @@ export default function EditProfile() {
                 <img
                   loading="lazy"
                   className="w-full p-1  border-2 border-green-500  h-full rounded-full shadow-lg"
-                  src="https://static.vecteezy.com/system/resources/previews/022/450/297/original/3d-minimal-purple-user-profile-avatar-icon-in-circle-white-frame-design-vector.jpg"
+                  src="/images/user.svg"
                   alt="Bonnie image"
                 />
               </div>

@@ -57,16 +57,17 @@ export default function PageBook({ id }) {
               </div>
               <div className="w-full lg:w-1/2 px-4">
                 <div className="max-w-md mb-6">
-                  <span className="text-xs text-gray-500  font-bold tracking-wider">
+                 
+                  <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl  md:text-7xl lg:text-2xl font-heading ">
+                    {allbooks.bookName}
+                  </h2>
+                  <span className="text-xs   text-gray-500  font-bold tracking-wider">
                     دسته بندی{" "}
                     <span className="bg-green-600 text-white p-1 rounded-md font-normal">
                       #{allbooks?.subCategory?.name}
                     </span>
                   </span>
-                  <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl  md:text-7xl lg:text-2xl font-heading ">
-                    {allbooks.bookName}
-                  </h2>
-                  <p className="flex items-center mb-6">
+                  <p className="flex items-center mt-6 mb-6">
                     <span className="mr-2 text-md text-green-600 font-bold">
                       کدکتاب :
                     </span>
@@ -74,7 +75,7 @@ export default function PageBook({ id }) {
                       {Pn.convertEnToPe(allbooks.id)}
                     </span>
                   </p>
-                  <p className="text-lg text-gray-400 text-justify">
+                  <p className="text-sm lg:text-lg text-gray-500 text-justify">
                     کتاب {allbooks.bookName} در حال حاظر در دانشکده{" "}
                     {allbooks?.library?.libraryName} در قفسه{" "}
                     {allbooks.shelfName} می باشد و شما با کد کتاب{" "}
@@ -88,7 +89,7 @@ export default function PageBook({ id }) {
                     جزییات کتاب :
                   </h4>
                   <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                    <h3 className="text-lg text-gray-700 text-right font-heading font-medium">
+                    <h3 className="lg:text-lg text-sm text-gray-700 text-right font-heading font-medium">
                       نویسندگان :{" "}
                       {allbooks?.authorName?.map((value, index) => {
                         return value + " ";
@@ -96,7 +97,7 @@ export default function PageBook({ id }) {
                     </h3>
                   </button>
                   <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                    <h3 className="text-lg text-gray-700 font-medium text-right font-heading ">
+                    <h3 className="lg:text-lg text-sm text-gray-700 font-medium text-right font-heading ">
                       مترجمان :{" "}
                       {allbooks?.translatorName?.map((value, index) => {
                         return value + " ";
@@ -104,12 +105,12 @@ export default function PageBook({ id }) {
                     </h3>
                   </button>
                   <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                    <h3 className="text-lg text-gray-700 font-medium text-right font-heading ">
+                    <h3 className="lg:text-lg text-sm text-gray-700 font-medium text-right font-heading ">
                       انتشارات : {allbooks.publisherName}
                     </h3>
                   </button>
                   <button className="flex w-full md:w-2/3 pl-6 lg:pl-12 pr-6 py-4 mb-4 justify-between items-center leading-7 rounded-2xl border-2 border-greenGray-200 hover:border-greenGray-300">
-                    <h3 className="text-lg font-heading text-gray-700 font-medium">
+                    <h3 className="lg:text-lg text-sm font-heading text-gray-700 font-medium">
                       تعداد صفحات : {Pn.convertEnToPe(allbooks.numberPage)}
                     </h3>
                   </button>
