@@ -44,16 +44,6 @@ export default function SingleRowBook(props) {
           </div>
           <div className="flex-auto justify-evenly">
             <div className="flex flex-wrap ">
-              <div className="w-full flex-none text-sm flex items-center text-gray-600">
-                <GrFormView size={20} />
-                <span className="text-gray-400 whitespace-nowrap mr-3">
-                  +
-                  {props.seen == 0
-                    ? Pn.convertEnToPe(Math.floor(Math.random() * 42))
-                    : Pn.convertEnToPe(props.seen)}
-                  K
-                </span>
-              </div>
               <div className="flex items-center w-full justify-between min-w-0 my-1 ">
                 <Link
                   href={{ pathname: "/book/[id]" }}

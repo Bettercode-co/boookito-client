@@ -184,15 +184,15 @@ export default function MainComponent() {
         {!currenLoading && (
           <section className="grid md:grid-cols-2 lg:w-2/3 lg:mx-auto bg-white shadow-lg rounded-md p-2 lg:grid-cols-4 2xl:grid-cols-5 sm:grid-cols-3 grid-cols-3">
             {books.map((value, index) => {
+              const modifiedImageSource = value.imageSource.replace('https://bookito-data-storage.storage.iran.liara.space/images/', 'https://boookito.storage.ir/');
               return (
                 <SingleRowBook
                   key={value.id}
-                  imageSource={value.imageSource}
+                  imageSource={'/images/nophoto.png'}
                   bookId={value.id}
                   categoryName={value.subCategory.category.categoryName}
                   bookName={value.bookName}
                   publisherName={value.publisherName}
-                  seen={value.seen}
                 />
               );
             })}

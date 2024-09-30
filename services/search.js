@@ -12,6 +12,7 @@ export async function last_search(
     pageId,
     categoryId,
   });
+  console.log({result})
 
-  return result.data.hits;
+  return result.data;
 }
