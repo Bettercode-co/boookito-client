@@ -7,7 +7,6 @@ import { useState } from "react";
 import Login from "../components/Login";
 import NavbarComponent from "../components/Layout/Navbar";
 import { useRouter } from "next/router";
-import ApiMiddleware from "../components/Middleware/Up";
 import DesktopFooter from "../components/Footer/Desktop";
 
 function MyApp({ Component, pageProps }) {
@@ -17,7 +16,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <ApiMiddleware />
       {login ? (
         <Layout>
           <NavbarComponent url={nowRouter} />

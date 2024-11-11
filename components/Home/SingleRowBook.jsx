@@ -1,8 +1,5 @@
 import Link from "next/link";
-import BlurImage from "../Lazy/BlurImage";
 import React from "react";
-import { GrFormView, GrView } from "react-icons/gr";
-import { FiPenTool } from "react-icons/fi";
 import Pn from "persian-number";
 import Image from "next/image";
 const imageStyle = {
@@ -22,22 +19,12 @@ export default function SingleRowBook(props) {
               as={`/book/${props.bookId}`}
             >
               <a>
-                <Image
-                  src={props.imageSource}
-                  alt="book not loaded"
-                  width={500}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={true}
-                  height={500}
-                  style={{
-                    objectFit: "contain",
-                  }}
+                <img
+                  src={props.imageSource== "https://bookito-object-storage.storage.iran.liara.space/nophoto.png" ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSWSxsVpAmqb_T7CLGolJ193Bw9xh7X7r0yQ&s" : props.imageSource}
+                  alt="Just a flower"
+                  priority
                   placeholder="blur"
-                  blurDataURL="YOUR_GENERATED_BLURHASH_STRING"
-                  quality={1}
-                  layout="fill"
-                  objectFit="contain"
-                  className="rounded-md"
+                  className="rounded-md h-40"
                 />
               </a>
             </Link>
@@ -49,7 +36,7 @@ export default function SingleRowBook(props) {
                   href={{ pathname: "/book/[id]" }}
                   as={`/book/${props.bookId}`}
                 >
-                  <a className="text-sm  text-right cursor-pointer text-gray-700 font-bold hover:text-purple-500 truncate ">
+                  <a className="text-sm  text-right cursor-pointer text-gray-700 font-bold hover:text-green-700 truncate ">
                     {props.bookName}
                   </a>
                 </Link>

@@ -17,11 +17,11 @@ export default function NavbarComponent({ url }) {
           aria-label="Global"
         >
           <div className=" ">
-            <Link href="/">
-              <a href="" className="flex-none text-xl font-semibold ">
+            <a href="/">
+              <a href="/" className="flex-none text-xl font-semibold ">
                 <LogoApplication />
               </a>
-            </Link>
+            </a>
           </div>
           <div className="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
             <div className="hidden sm:block"></div>

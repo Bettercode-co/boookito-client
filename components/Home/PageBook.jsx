@@ -34,30 +34,22 @@ export default function PageBook({ id }) {
               <div className="w-full  lg:w-1/2 px-4 mb-16 lg:mb-0">
                 <div className="flex  -mx-4 flex-wrap items-center justify-between lg:justify-start lg:items-start xl:items-center">
                   <div className="w-full  sm:w-9/12 px-4 ">
-                    <Image
-                      src={allbooks.imageSource}
+                    <img
+                      src={
+                        allbooks.imageSource ==
+                        "https://bookito-object-storage.storage.iran.liara.space/nophoto.png"
+                          ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSWSxsVpAmqb_T7CLGolJ193Bw9xh7X7r0yQ&s"
+                          : allbooks.imageSource
+                      }
                       alt="Just a flower"
-                      width={1000}
-                      height={950}
-                      priority
                       placeholder="blur"
-                      blurDataURL="YOUR_GENERATED_BLURHASH_STRING"
-                      quality={1}
-                      layout="responsive"
-                      objectFit="contain"
-                      className="rounded-md"
+                      className="rounded-md h-full"
                     />
-                    {/* <img
-                      className="mb-5 rounded-lg "
-                      src={allbooks.imageSource}
-                      alt=""
-                    /> */}
                   </div>
                 </div>
               </div>
               <div className="w-full lg:w-1/2 px-4">
                 <div className="max-w-md mb-6">
-                 
                   <h2 className="mt-6 mb-4 font-bold text-gray-600 text-2xl  md:text-7xl lg:text-2xl font-heading ">
                     {allbooks.bookName}
                   </h2>
