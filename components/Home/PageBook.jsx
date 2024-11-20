@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { AxiosInstance } from "../../utils/http";
 import { useRouter } from "next/router";
 import LazyBookComponent from "./LazyBook";
+const noPhotoImage =
+  "https://big-storage-arvan.s3.ir-tbz-sh1.arvanstorage.ir/downloads%2Fno-photo-available.png";
 
 import Pn from "persian-number";
 
-import Image from "next/image";
-
 export default function PageBook({ id }) {
+  const [imageSrc, setImageSrc] = useState("");
+  const [hasError, setHasError] = useState(false);
+
   const [allbooks, setBook] = useState({});
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -21,6 +24,18 @@ export default function PageBook({ id }) {
         console.log(err);
       });
   }, [id]);
+  const handleImageError = (e) => {
+    if (!hasError) {
+      setHasError(true);
+      e.target.src = noPhotoImage;
+    }
+  };
+  const initialImageSrc =
+    !allbooks.imageSource ||
+    allbooks.imageSource ===
+      "https://bookito-object-storage.storage.iran.liara.space/nophoto.png"
+      ? noPhotoImage
+      : allbooks.imageSource;
 
   return (
     <>
@@ -35,15 +50,13 @@ export default function PageBook({ id }) {
                 <div className="flex  -mx-4 flex-wrap items-center justify-between lg:justify-start lg:items-start xl:items-center">
                   <div className="w-full  sm:w-9/12 px-4 ">
                     <img
-                      src={
-                        allbooks.imageSource ==
-                        "https://bookito-object-storage.storage.iran.liara.space/nophoto.png"
-                          ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSWSxsVpAmqb_T7CLGolJ193Bw9xh7X7r0yQ&s"
-                          : allbooks.imageSource
-                      }
-                      alt="Just a flower"
-                      placeholder="blur"
-                      className="rounded-md h-full"
+                      src={imageSrc || initialImageSrc}
+                      alt={allbooks.bookName || "Book cover"}
+                      className="rounded-md h-full object-contain"
+                      onError={handleImageError}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
                     />
                   </div>
                 </div>
