@@ -9,6 +9,8 @@ import LazyBookComponent from "./LazyBook";
 
 export default function MainComponent() {
   const router = useRouter();
+  const isRouterReady = router.isReady
+  
   const { bookName, libraryId, pageId, categoryId } = router.query;
 
   // State variables
@@ -141,7 +143,7 @@ export default function MainComponent() {
         </section>
       )}
 
-      {!currenLoading && totalResults > 10 && (
+      {!currenLoading  && (
         <div className="flex justify-center mx-auto my-16">
           {currenPageId > 1 && (
             <button
@@ -151,7 +153,7 @@ export default function MainComponent() {
               قبلی
             </button>
           )}
-          {currenPageId < Math.ceil(totalResults / 10) && (
+          {currenPageId  && (
             <button
               onClick={() => handlePageChange(currenPageId + 1)}
               className="inline-flex justify-center items-center gap-x-2 text-center bg-white border hover:border-gray-300 text-sm text-green-600 hover:text-green-700 font-medium hover:shadow-sm rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4"
