@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getLibraries, getCategories } from '../services/library';
 import { Switch } from '@heroui/switch';
@@ -26,7 +26,7 @@ interface SelectEvent {
     };
 }
 
-export const Aside = () => {
+const AsideContent = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     
@@ -294,5 +294,19 @@ size="sm"
                 </div>
             </aside>
         </>
+    );
+};
+
+export const Aside = () => {
+    return (
+        <Suspense fallback={
+            <div className="hidden md:flex fixed top-20 right-6 w-64 bg-white p-6 shadow-md rounded-lg flex-col h-[calc(100vh-3.5rem-3rem)] md:h-[calc(100vh-3.5rem-4rem)] z-10 overflow-y-auto">
+                <div className="flex justify-center items-center h-full">
+                    <div className="animate-spin rounded-full h-8 w-8 border-4 border-gray-900 border-t-transparent"></div>
+                </div>
+            </div>
+        }>
+            <AsideContent />
+        </Suspense>
     );
 };

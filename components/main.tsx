@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Tooltip } from "@heroui/tooltip";
 import Link from 'next/link';
@@ -27,7 +27,7 @@ interface ApiResponse {
     };
 }
 
-export const MainContent = () => {
+const MainContent = () => {
     const searchParams = useSearchParams();
     const [books, setBooks] = useState<Book[]>([]);
     const [pagination, setPagination] = useState<Pagination>({
@@ -62,7 +62,7 @@ export const MainContent = () => {
     if (isLoading) {
         return (
             <main className="flex-1 lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
-
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-900 border-t-transparent"></div>
             </main>
         );
     }
@@ -179,5 +179,17 @@ export const MainContent = () => {
                 </div>
             </div>
         </main>
+    );
+};
+
+export const Main = () => {
+    return (
+        <Suspense fallback={
+            <main className="flex-1 lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-900 border-t-transparent"></div>
+            </main>
+        }>
+            <MainContent />
+        </Suspense>
     );
 };

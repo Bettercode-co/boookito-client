@@ -1,10 +1,13 @@
 'use client'
 
-import { useParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { Tooltip } from "@heroui/tooltip";
+import { Chip } from "@heroui/chip";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
+import Head from "next/head";
 import { formatAuthors, formatTranslators, getBookDetails } from '../../../services/library'
-import {Chip} from "@heroui/chip";
-
 
 interface BookDetails {
     id: number;
