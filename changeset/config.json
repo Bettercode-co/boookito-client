@@ -1,0 +1,14 @@
+{
+    "changelog": ["@changesets/cli/changelog", { "repo": "heroui/ripple" }],
+    "commit": false,
+    "linked": [],
+    "access": "public",
+    "baseBranch": "main",
+    "updateInternalDependencies": "patch",
+    "ignore": [],
+    "snapshot": {
+      "useCalculatedVersion": true,
+      "prereleaseTemplate": "canary-{timestamp}"
+    }
+  }
+  
