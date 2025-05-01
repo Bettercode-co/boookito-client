@@ -62,19 +62,19 @@ export const Aside = () => {
         router.push(`?${newSearchParams.toString()}`);
     };
 
-    const handleSortChange = (e: SelectEvent) => {
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedSort(value);
         updateQueryString({ sort: value });
     };
 
-    const handleLibraryChange = (e: SelectEvent) => {
+    const handleLibraryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedLibrary(value);
         updateQueryString({ library: value });
     };
 
-    const handleCategoryChange = (e: SelectEvent) => {
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedCategory(value);
         updateQueryString({ category: value });
