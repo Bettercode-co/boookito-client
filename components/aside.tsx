@@ -274,3 +274,19 @@ size="sm"
         </>
     );
 };
+
+
+interface Library {
+    id: number;
+    libraryName: string;
+}
+
+interface Category {
+    id: number;
+    categoryName: string;
+}
+
+interface SortOption {
+    value: string;
+    label: string;
+}
