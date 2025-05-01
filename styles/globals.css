@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "iranSansWeb";
+    src: url("../public/fonts/iransans.ttf");
+}
+html{
+    background-color: #f3f4f6!important
+    
+}
+body{
+    direction: rtl!important;
+    font-family: "iranSansWeb"!important;
+
+}
+
+.toggle-checkbox:checked {
+    transform: translateX(0);
+    border-color: #374151;
+}
+
+.toggle-label {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #374151;
+}
+
