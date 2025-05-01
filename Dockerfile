@@ -1,17 +1,15 @@
-# مرحله بیلد
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# فقط package.json رو کپی کن
 COPY package.json ./
-RUN npm install
+
+RUN npm install --force
 
 COPY . .
 
 RUN npm run build
 
-# مرحله ران‌تایم
 FROM node:20-alpine AS runner
 
 WORKDIR /app

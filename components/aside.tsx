@@ -247,7 +247,7 @@ size="sm"
                     <div className="fixed inset-x-0 bottom-0 z-50">
                         <div className="bg-white rounded-t-2xl p-6 h-[90vh] flex flex-col">
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-lg font-semibold">فیلترها</h2>
+                                <h2 className="text-lg font-semibold text-gray-600">فیلترها</h2>
                                 <button 
                                     onClick={() => setIsMobileFilterOpen(false)}
                                     className="text-gray-500"

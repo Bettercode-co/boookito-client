@@ -102,7 +102,12 @@ const MainContent = () => {
                 ) : (
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-7 gap-3 md:gap-5">
                         {books.map((book) => (
-                            <Link href={`/book/${book.id}`} key={book.id}>
+                            <Link 
+                                href={`/book/${book.id}`} 
+                                key={book.id}
+                                prefetch={true}
+                                className="block"
+                            >
                                 <div className="book-item relative aspect-book-cover">
                                     <Tooltip 
                                         content={book.bookName}
@@ -116,7 +121,7 @@ const MainContent = () => {
                                             className="w-full lg:h-80 h-32 object-cover rounded border border-gray-200 transition-opacity duration-200 hover:opacity-90"
                                             onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
-                                                target.src = "images/no_cover.gif";
+                                                target.src = "/images/no_cover.gif";
                                             }}
                                         />
                                     </Tooltip>
@@ -185,7 +190,7 @@ const MainContent = () => {
 export const Main = () => {
     return (
         <Suspense fallback={
-            <main className="flex-1 lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
+            <main className="flex-1  lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-900 border-t-transparent"></div>
             </main>
         }>

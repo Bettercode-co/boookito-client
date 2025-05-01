@@ -26,7 +26,7 @@ export const Header = () => {
 
     return <>
         {/* Header stays the same */}
-        <header className="bg-white h-14 shadow-sm flex items-center px-6 sticky top-0 z-20">
+        <header className="bg-white h-14 lg:py-6 py-8 shadow-sm flex items-center px-6 sticky top-0 z-20">
             <div className="font-bold text-lg text-black">
                <Link href="/">
                <img className="w-10" src="./images/logo.svg" alt="" />
