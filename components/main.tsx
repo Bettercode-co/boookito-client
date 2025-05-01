@@ -1,9 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Tooltip } from "@heroui/tooltip";
 import Link from 'next/link';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { toFarsiNumber } from '@/services/number';
 
 interface Pagination {
     total: number;
@@ -26,7 +27,7 @@ interface ApiResponse {
     };
 }
 
-export const MainContent = () => {
+const MainContent = () => {
     const searchParams = useSearchParams();
     const [books, setBooks] = useState<Book[]>([]);
     const [pagination, setPagination] = useState<Pagination>({
@@ -61,7 +62,7 @@ export const MainContent = () => {
     if (isLoading) {
         return (
             <main className="flex-1 lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
-
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-900 border-t-transparent"></div>
             </main>
         );
     }
@@ -71,6 +72,8 @@ export const MainContent = () => {
             return '';
         }
         
+        if (!searchParams) return `?page=${pageNumber}`;
+        
         const params = new URLSearchParams(searchParams.toString());
         params.set('page', pageNumber.toString());
         
@@ -78,13 +81,13 @@ export const MainContent = () => {
     };
 
     const getNextPageNumber = (): number => {
-        const currentPageStr = searchParams.get('page');
+        const currentPageStr = searchParams?.get('page');
         const currentPage = currentPageStr ? parseInt(currentPageStr, 10) : 1;
         return currentPage + 1;
     };
 
     const getPrevPageNumber = (): number => {
-        const currentPageStr = searchParams.get('page');
+        const currentPageStr = searchParams?.get('page');
         const currentPage = currentPageStr ? parseInt(currentPageStr, 10) : 1;
         return currentPage - 1;
     };
@@ -97,9 +100,14 @@ export const MainContent = () => {
                         <p className="text-gray-500">کتابی یافت نشد</p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 md:gap-5">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-7 gap-3 md:gap-5">
                         {books.map((book) => (
-                            <Link href={`/book/${book.id}`} key={book.id}>
+                            <Link 
+                                href={`/book/${book.id}`} 
+                                key={book.id}
+                                prefetch={true}
+                                className="block"
+                            >
                                 <div className="book-item relative aspect-book-cover">
                                     <Tooltip 
                                         content={book.bookName}
@@ -110,10 +118,10 @@ export const MainContent = () => {
                                         <img
                                             src={book.imageSource}
                                             alt={book.title || "تصویر کتاب"}
-                                            className="w-full h-80 object-cover rounded border border-gray-200 transition-opacity duration-200 hover:opacity-90"
+                                            className="w-full lg:h-80 h-32 object-cover rounded border border-gray-200 transition-opacity duration-200 hover:opacity-90"
                                             onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
-                                                target.src = "https://www.peeters-leuven.be/covers/no_cover.gif";
+                                                target.src = "/images/no_cover.gif";
                                             }}
                                         />
                                     </Tooltip>
@@ -145,14 +153,15 @@ export const MainContent = () => {
                         <div>
                             <p className="text-sm text-gray-700">
                                 نمایش{' '}
-                                <span className="font-medium">{(pagination.currentPage - 1) * pagination.itemsPerPage + 1}</span>
+                                <span className="font-medium">{toFarsiNumber((pagination.currentPage - 1) * pagination.itemsPerPage + 1)}</span>
                                 {' '}تا{' '}
                                 <span className="font-medium">
-                                    {Math.min(pagination.currentPage * pagination.itemsPerPage, pagination.total)}
+                                    {toFarsiNumber(Math.min(pagination.currentPage * pagination.itemsPerPage, pagination.total))}
                                 </span>
                                 {' '}از{' '}
-                                <span className="font-medium">{pagination.total}</span>
-                                {' '}نتیجه
+                                <span className="font-medium">
+  {toFarsiNumber(pagination.total.toLocaleString("fa-IR"))}
+</span>                                {' '}نتیجه
                             </p>
                         </div>
                         <div>
@@ -175,5 +184,17 @@ export const MainContent = () => {
                 </div>
             </div>
         </main>
+    );
+};
+
+export const Main = () => {
+    return (
+        <Suspense fallback={
+            <main className="flex-1  lg:h-screen p-4 md:p-8 pt-20 md:pt-24 md:mr-[calc(16rem+2rem)] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-900 border-t-transparent"></div>
+            </main>
+        }>
+            <MainContent />
+        </Suspense>
     );
 };

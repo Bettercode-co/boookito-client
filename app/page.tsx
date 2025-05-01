@@ -1,32 +1,8 @@
 "use client";
 
-
-import { MainContent } from "@/components/main";
-import Head from "next/head";
-
+import { Main } from "@/components/main";
 
 
 export default function BooksPage() {
-
-
-
-
-
-
-
-
-
-  return (
-
-  <>
-  
-  <Head>
-      <title>
-        data
-      </title>
-      </Head>
-      <MainContent />
-  </>
-
-  );
+  return <Main/>
 }

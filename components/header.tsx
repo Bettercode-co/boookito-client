@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 export const Header = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
+    const [searchTerm, setSearchTerm] = useState(searchParams?.get('search') ?? '');
     const [debouncedSearchTerm] = useDebounce(searchTerm, 1000);
 
     useEffect(() => {
         const updateSearchQuery = () => {
+            if (!searchParams) return;
             const newSearchParams = new URLSearchParams(searchParams.toString());
             if (debouncedSearchTerm) {
                 newSearchParams.set('search', debouncedSearchTerm);
@@ -25,10 +26,10 @@ export const Header = () => {
 
     return <>
         {/* Header stays the same */}
-        <header className="bg-white h-14 shadow-sm flex items-center px-6 sticky top-0 z-20">
+        <header className="bg-white h-14 lg:py-6 py-8 shadow-sm flex items-center px-6 sticky top-0 z-20">
             <div className="font-bold text-lg text-black">
                <Link href="/">
-               <img className="w-10" src="images/logo.svg" alt="" />
+               <img className="w-10" src="./images/logo.svg" alt="" />
                </Link>
             </div>
         </header>

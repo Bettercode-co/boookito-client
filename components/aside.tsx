@@ -1,22 +1,43 @@
-
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getLibraries, getCategories } from '../services/library';
 import { Switch } from '@heroui/switch';
+import { toFarsiNumber } from '@/services/number';
 
-export const Aside = () => {
+interface Library {
+    id: number;
+    libraryName: string;
+}
+
+interface Category {
+    id: number;
+    categoryName: string;
+}
+
+interface SortOption {
+    value: string;
+    label: string;
+}
+
+interface SelectEvent {
+    target: {
+        value: string;
+    };
+}
+
+const AsideContent = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     
     // States
-    const [libraries, setLibraries] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [selectedLibrary, setSelectedLibrary] = useState(searchParams.get('library') || '');
-    const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
-    const [selectedSort, setSelectedSort] = useState(searchParams.get('sort') || '');
-    const [pageCount, setPageCount] = useState(parseInt(searchParams.get('pageCount') || '1000'));
-    const [hasImage, setHasImage] = useState(searchParams.get('hasImage') === 'true');
+    const [libraries, setLibraries] = useState<Library[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [selectedLibrary, setSelectedLibrary] = useState(searchParams?.get('library') ?? '');
+    const [selectedCategory, setSelectedCategory] = useState(searchParams?.get('category') ?? '');
+    const [selectedSort, setSelectedSort] = useState(searchParams?.get('sort') ?? '');
+    const [pageCount, setPageCount] = useState(parseInt(searchParams?.get('pageCount') ?? '1000'));
+    const [hasImage, setHasImage] = useState(searchParams?.get('hasImage') === 'true');
     const [isLoading, setIsLoading] = useState(false);
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
@@ -29,6 +50,7 @@ export const Aside = () => {
 
     // Handlers
     const updateQueryString = (params: { [key: string]: string }) => {
+        if (!searchParams) return;
         const newSearchParams = new URLSearchParams(searchParams.toString());
         Object.entries(params).forEach(([key, value]) => {
             if (value) {
@@ -40,25 +62,25 @@ export const Aside = () => {
         router.push(`?${newSearchParams.toString()}`);
     };
 
-    const handleSortChange = (e) => {
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedSort(value);
         updateQueryString({ sort: value });
     };
 
-    const handleLibraryChange = (e) => {
+    const handleLibraryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedLibrary(value);
         updateQueryString({ library: value });
     };
 
-    const handleCategoryChange = (e) => {
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         setSelectedCategory(value);
         updateQueryString({ category: value });
     };
 
-    const handlePageCountChange = (e) => {
+    const handlePageCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setPageCount(parseInt(value));
         updateQueryString({ pageCount: value });
@@ -187,8 +209,8 @@ export const Aside = () => {
                     />
                 </div>
                 <div className="flex justify-between text-xs text-gray-500 mt-1.5" dir="rtl">
-                    <span>1</span>
-                    <span>{pageCount}</span>
+                    <span>{toFarsiNumber(1)}</span>
+                    <span>{toFarsiNumber(pageCount)}</span>
                 </div>
             </div>
 
@@ -225,7 +247,7 @@ size="sm"
                     <div className="fixed inset-x-0 bottom-0 z-50">
                         <div className="bg-white rounded-t-2xl p-6 h-[90vh] flex flex-col">
                             <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-lg font-semibold">فیلترها</h2>
+                                <h2 className="text-lg font-semibold text-gray-600">فیلترها</h2>
                                 <button 
                                     onClick={() => setIsMobileFilterOpen(false)}
                                     className="text-gray-500"
@@ -272,5 +294,19 @@ size="sm"
                 </div>
             </aside>
         </>
+    );
+};
+
+export const Aside = () => {
+    return (
+        <Suspense fallback={
+            <div className="hidden md:flex fixed top-20 right-6 w-64 bg-white p-6 shadow-md rounded-lg flex-col h-[calc(100vh-3.5rem-3rem)] md:h-[calc(100vh-3.5rem-4rem)] z-10 overflow-y-auto">
+                <div className="flex justify-center items-center h-full">
+                    <div className="animate-spin rounded-full h-8 w-8 border-4 border-gray-900 border-t-transparent"></div>
+                </div>
+            </div>
+        }>
+            <AsideContent />
+        </Suspense>
     );
 };
