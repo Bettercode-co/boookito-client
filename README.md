@@ -4,21 +4,21 @@ You can localize this template for your region.
 Of course, this project needs an admin management panel and a back-end that you can [email](mailto:m789219@gmail.com) and receive the back-end of this project privately.
 
 ## <h4> HomePage </h4> 
-![Homapage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/home-page.PNG)
+![Homapage](./public/screenshots/home-page.PNG)
 ## <h4> BookPage </h4> 
-![Bookpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/book-page.PNG)
+![Bookpage](./public/screenshots/book-page.PNG)
 ## <h4> LoginPage </h4> 
-![Loginpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/login-page.PNG)
+![Loginpage](./public/screenshots/login-page.PNG)
 ## <h4> DashboardPage </h4> 
-![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/dashboard-page.PNG)
+![Dashboardpage](./public/screenshots/dashboard-page.PNG)
 ## <h4> ProfilePage </h4> 
-![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/profile-page.PNG)
+![Dashboardpage](./public/screenshots/profile-page.PNG)
 ## <h4> ForgetPassword </h4> 
-![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/forgetpassword-page.PNG)
+![Dashboardpage](./public/screenshots/forgetpassword-page.PNG)
 ## <h4> ChangePassword </h4> 
-![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/changepassword-page.PNG)
+![Dashboardpage](./public/screenshots/changepassword-page.PNG)
 ## <h4> BorrowingsPage </h4> 
-![Dashboardpage](https://github.com/Bettercode-company/boookito-client/blob/master/public/screenshots/borrowings-page.PNG)
+![Dashboardpage](./public/screenshots/borrowings-page.PNG)
 First, run the development server:
 
 ```bash
