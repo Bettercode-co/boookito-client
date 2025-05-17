@@ -47,7 +47,7 @@ export default function BookPageClient({ params }: BookPageClientProps) {
                 setLoading(false);
                 return;
             }
-            
+
             try {
                 const bookData = await getBookDetails(Number(params.id));
                 setBook(bookData);
@@ -82,7 +82,7 @@ export default function BookPageClient({ params }: BookPageClientProps) {
     }
 
     return (
-        <main className="p-4 md:p-8 lg:p-12 max-w-6xl mx-auto overflow-x-hidden">
+        <main className="p-4 lg:max-w-3xl md:p-8 lg:p-12 max-w-6xl mx-auto overflow-x-hidden">
             <div className="mb-4 md:mb-8 mt-20 lg:mt-20">
                 <button
                     onClick={() => router.back()}
@@ -108,13 +108,13 @@ export default function BookPageClient({ params }: BookPageClientProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-12">
                 <div className="md:col-span-1 lg:col-span-1 flex justify-center">
                     <img
-                        src={book?.imageSource?.startsWith('http') 
-                            ? book.imageSource 
-                            : book?.imageSource?.startsWith('/') 
-                                ? book.imageSource 
+                        src={book?.imageSource?.startsWith('http')
+                            ? book.imageSource
+                            : book?.imageSource?.startsWith('/')
+                                ? book.imageSource
                                 : `/images/${book?.imageSource}`}
                         alt={book?.bookName || 'تصویر کتاب'}
-                        className="w-64 sm:w-80 lg:w-full h-auto object-cover rounded-lg shadow-md aspect-[2/3]"
+                        className="w-full sm:w-80 md:w-full lg:h-60  xlg:w-full  h-auto object-cover rounded-lg shadow-md aspect-[2/3]"
                         onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.src = "/images/no_cover.gif";
@@ -130,13 +130,13 @@ export default function BookPageClient({ params }: BookPageClientProps) {
                     </p>
 
                     <div className="mb-4 md:mb-6 w-full">
-                        <Chip 
-                            radius="sm" 
-                            size='lg' 
-                            className='bg-[#3e3e45] text-white text-sm md:text-base w-full' 
-                            variant="shadow"
+                        <Chip
+                            radius="sm"
+                            size='lg'
+                            className='border-[#3e3e45] border text-[#3e3e45] text-sm md:text-base w-full'
+                            variant="light"
                         >
-                            دریافت حضوری کتاب با کد {toFarsiNumber(book.id)} در کتابخانه دانشگاه {book.library.libraryName}
+                            دریافت حضوری کتاب با کد <span className="font-bold underline">{toFarsiNumber(book.id)}</span> در کتابخانه دانشگاه {book.library.libraryName}
                         </Chip>
                     </div>
 

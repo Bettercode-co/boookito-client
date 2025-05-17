@@ -100,7 +100,7 @@ const MainContent = () => {
                         <p className="text-gray-500">کتابی یافت نشد</p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-7 gap-3 md:gap-5">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-7 gap-3 md:gap-5">
                         {books.map((book) => (
                             <Link 
                                 href={`/book/${book.id}`} 
